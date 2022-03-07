@@ -87,7 +87,7 @@ public class Controll : MonoBehaviour
     }
     void MoneyText()
     {
-        moneyText.text = money.ToString();
+        //moneyText.text = money.ToString();
         PlayerPrefs.SetInt("money", money);
     }  
 

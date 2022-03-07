@@ -8,11 +8,6 @@ TagManager:
   - Old
   - Box
   - Drop
-  - Tower
-  - Multiple
-  - Boost
-  - HostDrop
-  - Host
   - BagHost
   layers:
   - Default
