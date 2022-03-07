@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,21 +12,16 @@ public class Controll : MonoBehaviour
     public string _state;
     [SerializeField] GameObject[] panels;
 
-    public int money;
-    [SerializeField] TextMeshPro hostText;
+    [SerializeField] int money;
     [SerializeField] Text moneyText;
-    [SerializeField] Text[] goldText;
-    [SerializeField] GameObject _textUp;
-    int maxHost, winHost;
 
-    [SerializeField] Transform player;
-    [SerializeField] int pl_win_count, en_win_count, win_count;
-    [SerializeField] Slider winProgress;
-    [SerializeField] GameObject[] towers;
+    //--- Upgarde---//
 
-    [Header("-------End Gold-------")]
-    public int winGold;
-    public int loseGold, moneyForGold;
+    [SerializeField] int[] cena, curUpdate, maxUpdate;
+    [SerializeField] Image[] updateImage;
+    [SerializeField] TextMeshProUGUI[] cenaText;
+
+    public static event Action _upgrade;
 
 
     private void Awake()
@@ -35,23 +31,12 @@ public class Controll : MonoBehaviour
     }
     void Start()
     {
+        money = PlayerPrefs.GetInt("money", 5000);
         Set_state("Menu");
-        goldText[0].text = PlayerPrefs.GetInt("gold", 0).ToString();
-        goldText[1].text = PlayerPrefs.GetInt("gold", 0).ToString();
-
-        win_count = GameObject.FindGameObjectsWithTag("Tower").Length;
-        towers = GameObject.FindGameObjectsWithTag("Tower");
-        money = 0;
-        MoneyText();   
-        
+        MoneyText();
+        ChangeText();
     }
-    public void SetMaxHost(int id)
-    {
-        maxHost = id;
-        if (hostText != null)
-            hostText.text = winHost + "/" + maxHost;
-    }
-
+  
     public void Set_state(string name)
     {
         _state = name;
@@ -63,7 +48,7 @@ public class Controll : MonoBehaviour
         switch(_state)
         {          
             case ("Win"):
-                Player.Instance.Stop();
+                
                 break;
             case ("Lose"):
 
@@ -73,24 +58,11 @@ public class Controll : MonoBehaviour
 
     public void StartLevel()
     {
-        AddWinCount();
         Set_state("Game");
-        EnemyControll.Instance?.StartEnemy();
     }
     public void Next_level()
     {
-        int id = Application.loadedLevel;
-        print(id);
-        if(id != Application.levelCount - 1)
-        {
-            SceneManager.LoadScene(Application.loadedLevel + 1);
-        }
-        else
-        {
-            SceneManager.LoadScene(0);
-        }
-        PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
-        
+        SceneManager.LoadScene(Application.loadedLevel);
     }
     public void Restart()
     {
@@ -99,71 +71,50 @@ public class Controll : MonoBehaviour
     
     public IEnumerator Win()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         Set_state("Win");
     }
-
-    public void LoseOn()
-    {
-        StartCoroutine(Lose());
-    }
     public IEnumerator Lose()
-    {        
-        yield return new WaitForSeconds(1);   
+    {
+        yield return new WaitForSeconds(1);
         Set_state("Lose");
     }
        
-    public void AddMoney(int id)
-    {        
-        money += id ;
+    public void ChangeMoney(int id)
+    {
+        money += id;
         MoneyText();
     }
     void MoneyText()
     {
         moneyText.text = money.ToString();
         PlayerPrefs.SetInt("money", money);
+    }  
+
+    public void UpgradeOn(bool on)
+    {
+        if(panels[4].activeSelf != on)
+            panels[4].SetActive(on);
     }
 
-    public void TextUp(string name)
+    public void Buy(int id)
     {
-        GameObject txt = Instantiate(_textUp, _textUp.transform.parent) as GameObject;     
-        txt.transform.position = new Vector3(player.position.x, player.position.y, player.position.z);
-        txt.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = name;
-        txt.SetActive(true);
-    } 
-    
-    public void AddWinCount()
-    {
-        pl_win_count = 0;
-        en_win_count = 0;
+        if(money >= cena[id] + (cena[id] * curUpdate[id]) && curUpdate[id] < maxUpdate[id])
+        {
+            PlayerPrefs.SetInt("upgrade" + id, (curUpdate[id] + 1));
+            ChangeMoney(-(cena[id] + (cena[id] * curUpdate[id])));
+            ChangeText();
 
-        for (int i = 0; i < towers.Length; i++)
-        {
-            if(towers[i].GetComponent<Tower>()._state == Tower.towerState.Enemy)
-            {
-                en_win_count++;
-            }
-            if (towers[i].GetComponent<Tower>()._state == Tower.towerState.Player)
-            {
-                pl_win_count++;
-            }
+            _upgrade.Invoke();
         }
-        WinProgress();
-        if (en_win_count == win_count)
-        {
-            Set_state("End");
-            StartCoroutine(Lose());
-        }
-        if (pl_win_count == win_count)
-        {
-            Set_state("End");
-            Player.Instance.Stop();
-            StartCoroutine(Win());
-        }
-    }   
-    void WinProgress()
-    {
-        int max = pl_win_count + en_win_count;
-        winProgress.value = (((float)en_win_count * 100) / (float)max) / 100;
     }
+    void ChangeText()
+    {
+        for (int i = 0; i < maxUpdate.Length; i++)
+        {
+            curUpdate[i] = PlayerPrefs.GetInt("upgrade" + i);
+            updateImage[i].fillAmount = (float)curUpdate[i] / (float)maxUpdate[i];
+            cenaText[i].text = (cena[i] + (cena[i] * curUpdate[i])).ToString();
+        }
+    }    
 }

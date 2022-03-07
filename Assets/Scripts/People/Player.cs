@@ -1,128 +1,130 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Cinemachine;
-
-[RequireComponent(typeof(Rigidbody))]
-
 public class Player : MonoBehaviour
 {
-    public static Player Instance;
-
-    public enum gameplayType
-    {
-        Line, Big
-    }
-
     public enum joystickType
     {
         Static, Dinamic
     }
-    [Header("-------Camera-------")]
-    [SerializeField] CinemachineVirtualCamera cam;
-    [SerializeField] float camScaleAdd, camScale;    
-    public gameplayType _gameplay;
 
-    [Header("-------Joystic-------")]    
+    public static Player Instance;
+   
+    [Header("Joystic")]
     public joystickType _joystick;
     public Rigidbody _rigidbody;
     [SerializeField] private FixedJoystick _joystickS;
     [SerializeField] private DynamicJoystick _joystickD;
+   
+    [Header("Player")]
+    [SerializeField] Transform cylindr;
+    [SerializeField] Transform[] well;
+    [SerializeField] private float _moveSpeed, _rotSpeed;   
+    public bool move, drop;
 
-    [Header("-------Player-------")]
-    [SerializeField] private float _moveSpeed;
-    public bool move;
-
-    [Header("-------Line-------")]
+    [Header("Track")]
+    
     [SerializeField] int _lineWidth;
-    [SerializeField] int startCount;
-    [SerializeField] GameObject hostPrefab;
-    public List<GameObject> _hostageList;
-    [SerializeField] Transform[] _hostPos;
-    [SerializeField] SkinnedMeshRenderer body;
-    [SerializeField] Material[] bodyMaterial;
+    [SerializeField] List<GameObject> _trackList;
+    [SerializeField] Transform[] _trackPos;
     Vector3 oldPositions;
 
-    [Header("-------Big-------")]
-    public int life;
-    [SerializeField] float addScale, maxScale, attackTime;
-    [SerializeField] Tower _targetTower;
-    int scaleLife;
-    bool _tow;
+    [Header("Scale")]
+    [SerializeField] Transform[] startPos;
+    [SerializeField] float addScale, maxScale;
+    public static event Action _upgrade;
 
-    [Header("-------Other-------")]
-    [SerializeField] Animator anim;
-    [SerializeField] TextMeshPro hostCountText;
-
-    [SerializeField] GameObject effect;
+    [Header("-------Camera-------")]
+    [SerializeField] CinemachineVirtualCamera cam;
+    [SerializeField] float camScaleAdd, camScale, maxCamScale;
 
     private void Awake()
-    {
-        camScale = cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
-
-        life = 1;
-        HostText();
-
-        _lineWidth = _lineWidth > _hostPos.Length ? _hostPos.Length : _lineWidth;
+    {       
         if (Instance == null) Instance = this;
         if (_joystick == joystickType.Static)
             _joystickS.gameObject.SetActive(true);
         else
-            _joystickD.gameObject.SetActive(true);
+            _joystickD.gameObject.SetActive(true);       
     }
     private void Start()
     {
-        scaleLife = (int)((maxScale - 1) / addScale);
-        SetAnimation("stay");
-
-        for (int i = 0; i < startCount; i++)
-        {
-            GameObject obj = PoolControll.Instance.Spawn("Host");
-            switch (_gameplay)
-            {
-                case (gameplayType.Line):
-                    AddHost(obj);
-                    break;
-                case (gameplayType.Big):
-                    obj.GetComponent<Hostage>().Destroy();
-                    AddScale();
-                    break;
-            }
-        }
+        
+    }
+    private void Update()
+    {
+        //if (Input.GetMouseButtonDown(0))
+        //    StartCoroutine(AddScale());
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //    MoveToPlayer();
     }
     private void FixedUpdate()
     {
-        if (Controll.Instance._state == "Game")
+        if (Controll.Instance._state == "Game" && !drop)
         {
-            _rigidbody.velocity = new Vector3(Joyctick("X") * _moveSpeed, _rigidbody.velocity.y, Joyctick("Y") * _moveSpeed);
+            //cylindr.Rotate(-Vector3.up * _rotSpeed * Time.deltaTime);
+            _rigidbody.velocity = new Vector3(Joyctick("X") * _moveSpeed, 0, Joyctick("Y") * _moveSpeed);
+
             if (Joyctick("X") >= 0.1f || Joyctick("Y") >= 0.1f || Joyctick("X") <= -0.1f || Joyctick("Y") <= -0.1f)
             {
                 transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
-                SetMovePosition();
+
+                cylindr.Rotate(-Vector3.up * _rotSpeed * Time.deltaTime);
+                for (int i = 0; i < well.Length; i++)
+                {
+                    well[i].Rotate(-Vector3.right * _rotSpeed * Time.deltaTime);
+                }              
+            }
+            else
+            {
+                cylindr.Rotate(-Vector3.up * (_rotSpeed/3) * Time.deltaTime);
             }
 
             if (cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance < camScale)
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance += camScaleAdd;
-            if(cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance > camScale)
+            if (cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance > camScale)
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance -= camScaleAdd;
         }
     }
-
-    public void SetAnimation(string name)
+    void MoveToPlayer()
     {
-        switch (name)
+        for (int i = 0; i < _trackList.Count; i++)
         {
-            case "stay":
-                anim.SetTrigger("stay");
-                HostageState(false);
-                break;
-            case "move":
-                anim.SetTrigger("move");
-                HostageState(true);
-                break;
+            if (i < 2)
+                _trackList[i].transform.parent = null;
+            _trackList[i].GetComponent<Track>().MoveToPlayer(gameObject.transform);           
         }
+        _trackList.Clear();
     }
+    public void AddTrack(GameObject obj)
+    {
+        int id = _trackList.Count;
+        if (_trackList.Count < 2)
+        {
+            obj.GetComponent<Track>().stay = true;
+            obj.transform.parent = startPos[_trackList.Count + 1].transform;
+            obj.transform.localPosition = new Vector3(0, 0, 0);
+            obj.transform.localRotation = startPos[_trackList.Count + 1].transform.localRotation;
+        }
+        else if (_trackList.Count >= 2 && _trackList.Count < 5)
+        {
+            obj.GetComponent<Track>().StartMove(startPos[id - 2].transform.GetChild(0));
+            obj.transform.position = startPos[id - 2].transform.GetChild(0).position;
+            obj.transform.rotation = startPos[id - 2].transform.GetChild(0).rotation;
+            //obj.transform.LookAt(startPos[id - 2].transform);
+        }
+        else
+        {
+            obj.GetComponent<Track>().StartMove(_trackList[id - 3].transform.GetChild(0));
+            obj.transform.position = _trackList[id - 3].transform.GetChild(0).position;
+            obj.transform.rotation = _trackList[id - 3].transform.GetChild(0).rotation;
+            //obj.transform.LookAt(_trackList[id - 3].transform);
+        }
+        _trackList.Add(obj);
+        //hostCountText.text = _hostageList.Count > 0 ? (_hostageList.Count + 1).ToString() : "1";
+    }  
 
     float Joyctick(string name)
     {
@@ -145,289 +147,45 @@ public class Player : MonoBehaviour
         return XY;
     }
 
-    //private void LateUpdate()
-    //{
-    //    if (_hostPos[0].position != oldPositions && _hostageList.Count > 0)
-    //    {
-    //        oldPositions = _hostPos[0].position;
-    //        for (int i = 0; i < _hostageList.Count; i++)
-    //        {
-    //            if (i < _lineWidth)
-    //            {
-    //                _hostageList[i].GetComponent<Hostage>().StartMove(_hostPos[i]);
-    //            }
-    //            else
-    //            {
-    //                int ct = i - _lineWidth;
-    //                _hostageList[i].GetComponent<Hostage>().StartMove(_hostageList[ct].transform.GetChild(0));
-    //            }
-    //        }
-    //    }
-    //}
-
-    void SetMovePosition()
-    {
-        oldPositions = _hostPos[0].position;
-        for (int i = 0; i < _hostageList.Count; i++)
-        {
-            if (i < _lineWidth)
-            {
-                _hostageList[i].GetComponent<Hostage>().StartMove(_hostPos[i]);
-            }
-            else
-            {
-                int ct = i - _lineWidth;
-                _hostageList[i].GetComponent<Hostage>().StartMove(_hostageList[ct].transform.GetChild(0));
-            }
-        }
-
-        //if (_hostPos[0].position != oldPositions && _hostageList.Count > 0)
-        //{           
-        //}
-    }
-
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.tag == "Hostage")
+        if(coll.gameObject.tag =="Update")
         {
-            switch (_gameplay)
-            {
-                case (gameplayType.Line):
-                    AddHost(coll.gameObject.transform.parent.gameObject);
-                    break;
-                case (gameplayType.Big):
-                    coll.gameObject.transform.parent.gameObject.GetComponent<Hostage>().Destroy();
-                    AddScale();
-                    break;
-            }              
+            Controll.Instance.UpgradeOn(true);
         }
-        if (coll.gameObject.tag == "Tower")
+        if (coll.gameObject.tag == "Multiple")
         {
-            switch (_gameplay)
-            {
-                case (gameplayType.Line):
-                    int id = coll.gameObject.GetComponent<Tower>().FullCount("Player", _hostageList.Count);
-                    MoveToTower(coll.gameObject.transform, id);
-
-                    break;
-                case (gameplayType.Big):
-                    _tow = true;
-                    _targetTower = coll.gameObject.GetComponent<Tower>();
-                    StartCoroutine(BigTowerDamage());
-                    break;
-            }
+            MoveToPlayer();
+            //coll.gameObject.SetActive(false);
         }
-        if (coll.gameObject.tag == "Boost")
+        if(coll.gameObject.tag == "Boost")
         {
-            switch (_gameplay)
-            {
-                case (gameplayType.Line):
-                    coll.gameObject.GetComponent<Boost>().SetBoost(_hostageList.Count);
-                    break;
-                case (gameplayType.Big):
-                    coll.gameObject.GetComponent<Boost>().SetScale(life);
-                    break;
-            }            
-        }
-        if (coll.gameObject.tag == "Money")
-        {
-            coll.gameObject.GetComponent<Money>().MoveOn(transform);
-        }
-
-        if (coll.gameObject.tag == "TowerFire" && _gameplay == gameplayType.Big)
-        {
-            coll.gameObject.GetComponent<TowerFire>().PlayerTarget(gameObject.transform);
-        }
-    }
-    private void OnCollisionEnter(Collision coll)
-    {
-        if (coll.gameObject.tag == "Host" && coll.gameObject.GetComponent<Hostage>()._status == Hostage.colorState.Enemy)
-        {
-            switch (_gameplay)
-            {
-                case (gameplayType.Line):
-                    if (_hostageList.Count > 0)
-                    {
-                        RemoveHosts(1);
-                        coll.gameObject.GetComponent<Hostage>().Destroy();
-                    }
-                    else
-                    {
-                        Controll.Instance.LoseOn();
-                        Damage();
-                    }
-                    break;
-                case (gameplayType.Big):
-                    coll.gameObject.GetComponent<Hostage>().Destroy();
-                    RemoveScale();
-                    break;
-            }
+            coll.gameObject.GetComponent<Boost>().SetBoost((_lineWidth * startPos.Length) - _trackList.Count);
         }
     }
     private void OnTriggerExit(Collider coll)
     {
-        if (coll.gameObject.tag == "Tower")
-        {            
-            switch (_gameplay)
-            {               
-                case (gameplayType.Big):
-                    _tow = false;
-                    StopCoroutine("BigTowerDamage");                    
-                    break;
-            }
-        }
-        if (coll.gameObject.tag == "TowerFire" && _gameplay == gameplayType.Big)
+        if (coll.gameObject.tag == "Update")
         {
-            coll.gameObject.GetComponent<TowerFire>().RemovePlayerTarget(gameObject.transform);
+            Controll.Instance.UpgradeOn(false);
         }
-    }
-
-    public void AddHost(GameObject obj)
-    {
-        Controll.Instance.TextUp("+1");
-        _hostageList.Add(obj);
-        SetMovePosition();
-
-        obj.GetComponent<Hostage>().SetState("move");
-        obj.GetComponent<Hostage>().SetStateColor("Player");
-                
-        HostText();
-    }
-
-    public void RemoveHosts(int count)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            //Destroy(_hostageList[_hostageList.Count - 1]);
-            _hostageList[_hostageList.Count - 1].SetActive(false);
-            RemoveHostage(_hostageList[_hostageList.Count - 1]);
-        }
-    }
-    public void RemoveHostage(GameObject obj)
-    {
-        for (int i = 0; i < _hostageList.Count; i++)
-        {
-            if (obj == _hostageList[i])
-            {
-                _hostageList.Remove(_hostageList[i]);
-                SetMovePosition();
-                HostText();
-            }
-        }
-    }
-
-    void AddScale()
-    {
-        life++;
-        transform.localScale += new Vector3(addScale, addScale, addScale);
-
-        HostText();
-        SetCamScale(life);
-    }
-    public void RemoveScale()
-    {
-        life--;
-        transform.localScale -= new Vector3(addScale, addScale, addScale);
-
-        StartCoroutine(BodyColor());
-        HostText();
-        if (life <= 0)
-        {
-            Controll.Instance.LoseOn();
-            Damage();
-        }
-        SetCamScale(life);
-    }
-    public void SetScale(int id)
-    {
-        life = id;
-        float scl = 1f + (float)id * addScale;
-        transform.localScale = new Vector3(scl,scl, scl);
-        HostText();
-        SetCamScale(life);
-    }  
-   
-  
-    public void HostText()
-    {
-        switch (_gameplay)
-        {
-            case (gameplayType.Line):
-                hostCountText.gameObject.transform.parent.gameObject.SetActive(_hostageList.Count > 0 ? true : false);
-                hostCountText.text = _hostageList.Count.ToString();
-                break;
-            case (gameplayType.Big):
-                hostCountText.gameObject.transform.parent.gameObject.SetActive(life < 50 ? (life > 1 ? true : false) : false);
-                hostCountText.text = (life - 1).ToString();
-                break;
-        }
-    }
-    
-    public void HostageState(bool _move)
-    {
-        move = _move;      
-        for (int i = 0; i < _hostageList.Count; i++)
-        {
-            _hostageList[i].GetComponent<Hostage>().SetState(_move ? "move" : "stay");
-        }
-    }
-    void MoveToTower(Transform target, int count)
-    {        
-        for (int i = 0; i < count; i++)
-        {
-            _hostageList[0].GetComponent<Hostage>().MoveToTower(target);
-            RemoveHostage(_hostageList[0]);
-        }
-    }
-    public void LeftStep()
-    {
-        Sound.Instance.Play_Sound("p_step_l");
-    }
-    public void RightStep()
-    {
-        Sound.Instance.Play_Sound("p_step_r");
-    }
-
-    public void Damage()
-    {       
-        hostCountText.gameObject.transform.parent.gameObject.SetActive(false);
-        //Instantiate(effect, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
-        GameObject eff = PoolControll.Instance.Spawn("Effect");
-        eff.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-        gameObject.SetActive(false);
-    }  
-    public void Stop()
-    {
-        SetAnimation("stay");
     }   
-
-    IEnumerator BodyColor()
+    public IEnumerator AddScale()
     {
-        body.material = bodyMaterial[0];
-        yield return new WaitForSeconds(0.02f);
-        body.material = bodyMaterial[1];
-    }
+        if(camScale < maxCamScale)
+            camScale += camScaleAdd;
 
-    void SetCamScale(int life)
-    {
-        camScale = 50 + ((life - 1) * 0.5f);
-    }
+        PlayerPrefs.SetInt("upgrade0", PlayerPrefs.GetInt("upgrade0") + 1);
+        PlayerPrefs.SetInt("upgrade1", PlayerPrefs.GetInt("upgrade1") + 1);
 
-    IEnumerator BigTowerDamage()
-    {
-        yield return new WaitForSeconds(attackTime);
-        if (life > 1 && _tow)
-        {
-            RemoveScale();
-            _targetTower.Enter("Player");
-            StartCoroutine(BigTowerDamage());
-        }            
-    }
-    public void BulletDamage()
-    {        
-        if (_gameplay == gameplayType.Big)
-        {
-            RemoveScale();
-        }
+        transform.localScale += new Vector3(addScale, addScale, addScale);
+        transform.position = new Vector3(transform.position.x, transform.position.y + (0.01f * PlayerPrefs.GetInt("upgrade0")), transform.position.z);
+
+        yield return new WaitForSeconds(0.2f);
+        if(transform.localScale.x > maxScale)
+            transform.localScale -= new Vector3(addScale, addScale, addScale);
+                   
+        _upgrade.Invoke();
+        
     }
 }

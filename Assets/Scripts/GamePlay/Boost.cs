@@ -13,11 +13,8 @@ public class Boost : MonoBehaviour
     [SerializeField] float count;
     [SerializeField] TextMeshPro boostText;
     [SerializeField] GameObject prefab;
-    [Header("----Money Controll----")]
-    [SerializeField] int nideMoney;
-    [SerializeField] TextMeshPro nideMoneyText;
     void Start()
-    {        
+    {
         switch(boostType)
         {
             case (BoostVariant.plus):
@@ -33,72 +30,37 @@ public class Boost : MonoBehaviour
                 boostText.text = "/" + count;
                 break;
         }
-        nideMoneyText.text = nideMoney.ToString();
     }       
-    public void SetBoost(int cnt)
+    public void SetBoost(int id)
     {
-        if(Controll.Instance.money >= nideMoney)
-        {
-            switch (boostType)
-            {
-                case (BoostVariant.plus):
-                    Spawn(Mathf.FloorToInt(count));
-                    break;
-                case (BoostVariant.minus):
-                    Player.Instance.RemoveHosts(Mathf.FloorToInt(count < cnt ? count : cnt));
-                    Off();
-                    break;
-                case (BoostVariant.multiply):
-                    Spawn(Mathf.FloorToInt(cnt * (count - 1)));
-                    break;
-                case (BoostVariant.divide):
-                    int ct = Mathf.FloorToInt(cnt - (cnt / count));
-                    Player.Instance.RemoveHosts(ct < cnt ? ct : cnt);
-                    Off();
-                    break;
-            }
-            Controll.Instance.AddMoney(-nideMoney);
-        }        
-    }
+        count = id < count ? id : count;
 
-    public void SetScale(int cnt)
-    {
         switch (boostType)
         {
             case (BoostVariant.plus):
-                Player.Instance.SetScale((int)count + cnt);
+                Spawn();
                 break;
-            case (BoostVariant.minus):
-                if(cnt > (int)count)
-                    Player.Instance.SetScale(cnt - (int)count);
-                else
-                    Player.Instance.SetScale(1);
+            //case (BoostVariant.minus):
+            //    Player.Instance.RemoveHosts(Mathf.FloorToInt(count < cnt ? count : cnt));
+            //    Off();
+            //    break;
+            case (BoostVariant.multiply):               
+                Spawn();
                 break;
-            case (BoostVariant.multiply):
-                Player.Instance.SetScale(cnt * (int)count);
-                break;
-            case (BoostVariant.divide):
-                Player.Instance.SetScale(Mathf.FloorToInt((float)cnt /count));
-                break;
+            //case (BoostVariant.divide):
+            //    int ct = Mathf.FloorToInt(cnt - (cnt/count));
+            //    Player.Instance.RemoveHosts(ct < cnt ? ct : cnt);
+            //    Off();
+            //    break;
         }
-        Off();
     }
-
-
-    public void Spawn(int ct)
+    void Spawn()
     {
-        for (int i = 0; i < ct; i++)
+        for (int i = 0; i < count; i++)
         {
-            //GameObject obj = Instantiate(prefab, transform.position, transform.rotation) as GameObject;
-            GameObject obj = PoolControll.Instance.Spawn("Host");
-            obj.transform.position = transform.position;
-            Player.Instance.AddHost(obj);
+            GameObject obj = Instantiate(prefab, transform.position, transform.rotation) as GameObject;
+            Player.Instance.AddTrack(obj);
         }
-        Off();
-    }
-    void Off()
-    {
-        Controll.Instance.TextUp(boostText.text);
         gameObject.SetActive(false);
-    }
+    }   
 }

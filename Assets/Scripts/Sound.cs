@@ -21,8 +21,25 @@ public class Sound : MonoBehaviour
     }
     private void Update()
     {
-      
-    }   
+        //if (!GetComponent<AudioSource>().isPlaying)
+        //{            
+        //    clip_id = GetComponent<AudioSource>().clip == music_clip[2] ? 0 : clip_id + 1;
+        //    GetComponent<AudioSource>().clip = music_clip[clip_id];
+        //    GetComponent<AudioSource>().Play();
+        //}
+    }
+    //public void Set_voll(int id, float count)
+    //{
+    //    if (id == 0)
+    //    {
+    //        transform.GetChild(0).gameObject.GetComponent<AudioSource>().volume = count;
+    //        transform.GetChild(1).gameObject.GetComponent<AudioSource>().volume = count;
+    //    }
+    //    else
+    //    {
+    //        GetComponent<AudioSource>().volume = count;
+    //    }
+    //}
     public void Play_Sound(string name)
     {
 

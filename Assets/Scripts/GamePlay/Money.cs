@@ -4,58 +4,39 @@ using UnityEngine;
 
 public class Money : MonoBehaviour
 {
-    bool move;
     [SerializeField] int _addMoney;
     [SerializeField] Transform _target;
-    [SerializeField] float _dropForce, _speed;
-    public Tower tower;
+    [SerializeField] float _dropForce;
     private void OnEnable()
     {
-        _target = null;
+        _target = GameObject.FindGameObjectWithTag("Player").transform;
         GetComponent<BoxCollider>().isTrigger = false;
         GetComponent<Rigidbody>().useGravity = true;
-        move = false;
+        //move = false;
        
-        if (Controll.Instance._state == "Game")
-        {
-            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1f, 1f), 3.5f, Random.Range(-1f, -0.1f)) * _dropForce, ForceMode.Impulse);
-        }
-    }
-    void Start()
-    {
-             
-    }
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-2f, 2f), 3.5f, Random.Range(-2f, -0.1f)) * _dropForce, ForceMode.Impulse);
+        StartCoroutine(DoMove(0.5f));
+    }   
     void Update()
-    {        
-        if (move)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(_target.position.x, _target.position.y + 1, _target.position.z), _speed * Time.deltaTime);
-            if (transform.position == new Vector3(_target.position.x, _target.position.y + 1, _target.position.z))
-            {
-                if(_target.gameObject.tag == "Player")
-                {
-                    if (Sound.Instance != null) Sound.Instance.Play_Sound("money_off");
-                    Controll.Instance.AddMoney(20);
-                }
-                gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            transform.Rotate(Vector3.up * 100 * Time.deltaTime);
-        }
+    {       
     }
-    public void MoveOn(Transform target)
+    private IEnumerator DoMove(float time)
     {
-        Off();
-        _target = target;
-        GetComponent<BoxCollider>().isTrigger = true;
+        yield return new WaitForSeconds(1);
         GetComponent<Rigidbody>().useGravity = false;
-        move = true;
-    } 
-    public void Off()
-    {
-        tower.RemoveMoney(gameObject);
+        GetComponent<BoxCollider>().isTrigger = true;
+
+        Vector3 startPosition = transform.position;
+        float startTime = Time.realtimeSinceStartup;
+        float fraction = 0f;
+        while (fraction < 1f)
+        {
+            fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
+            transform.position = Vector3.Lerp(startPosition, _target.position, fraction);
+            yield return null;
+        }
+        Controll.Instance.ChangeMoney(_addMoney);
+        Destroy(gameObject);
     }
 }

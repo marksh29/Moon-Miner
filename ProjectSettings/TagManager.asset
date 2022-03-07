@@ -4,15 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Host
-  - Hostage
+  - Update
+  - Old
+  - Box
+  - Drop
   - Tower
-  - TowerFire
+  - Multiple
   - Boost
-  - Money
-  - BoostMoney
-  - Spawner
-  - MovePosition
+  - HostDrop
+  - Host
+  - BagHost
   layers:
   - Default
   - TransparentFX
@@ -20,14 +21,14 @@ TagManager:
   - 
   - Water
   - UI
-  - Hostage
-  - Player
-  - Enemy
-  - Tower
+  - Cylindr
+  - Body
+  - Track
+  - Ground
   - Money
-  - PlayerEnemy
-  - EnemyHost
-  - PlayerHost
+  - 
+  - 
+  - 
   - 
   - 
   - 
