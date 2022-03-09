@@ -18,14 +18,14 @@ public class Box : MonoBehaviour
     {
         target = trgt;
        
-        GetComponent<BoxCollider>().enabled = false;
-        GetComponent<Rigidbody>().isKinematic = true;
+        //GetComponent<BoxCollider>().enabled = true;
+        //GetComponent<Rigidbody>().isKinematic = false;
 
         transform.parent = target;
         transform.rotation = target.rotation;
 
         Vector3 startPosition = transform.localPosition;
-        Vector3 targetPosition = new Vector3(transform.localPosition.x, transform.localPosition.y < 0 ? target.position.y + 3 : transform.localPosition.y + 1f, transform.localPosition.z);
+        Vector3 targetPosition = new Vector3(transform.localPosition.x, transform.localPosition.y < 0 ? 5 : 1, transform.localPosition.z);
 
         float startTime = Time.realtimeSinceStartup;
         float fraction = 0f;
@@ -39,7 +39,6 @@ public class Box : MonoBehaviour
     }
     public IEnumerator MoveToTarget()
     {
-        transform.parent = target;
         Vector3 startPosition = transform.localPosition;
         float startTime = Time.realtimeSinceStartup;
         float fraction = 0f;
@@ -48,6 +47,16 @@ public class Box : MonoBehaviour
             fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / toTargetTime);
             transform.localPosition = Vector3.Lerp(startPosition, new Vector3(0, 0, 0), fraction);               
             yield return null;
+        }
+        transform.localPosition = new Vector3(0, 0, 0);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "AddScrap")
+        {
+            gameObject.SetActive(false);
+            other.gameObject.transform.parent.parent.GetComponent<Factoria>().AddScrap();
         }
     }
 }

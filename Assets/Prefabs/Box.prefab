@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 195670425881106383}
   - component: {fileID: 195670425881106380}
   - component: {fileID: 195670425881106368}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Scrap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 195670425881106378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.3899994, y: 0.85899997, z: 2.1599998}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

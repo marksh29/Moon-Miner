@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PoolControll : MonoBehaviour
 {
     public static PoolControll Instance;
-    [SerializeField] private GameObject box, fly_box;//, en_bullet, boss_bullet, nerf_bullet;
-    [SerializeField] private List<GameObject> box_stack, fly_box_stack;//, enemy_stack, boss_stack, nerf_stack;
+    [SerializeField] private GameObject box, fly_box, sand, drop_sand;//, en_bullet, boss_bullet, nerf_bullet;
+    [SerializeField] private List<GameObject> box_stack, fly_box_stack, sand_stack, drop_sand_stack;//, enemy_stack, boss_stack, nerf_stack;
     GameObject new_obj, obj;
 
     private void Start()
@@ -28,6 +28,12 @@ public class PoolControll : MonoBehaviour
                 break;
             case ("FlyBox"):
                 new_obj = Spawn(fly_box_stack, fly_box);
+                break;
+            case ("Sand"):
+                new_obj = Spawn(sand_stack, sand);
+                break;
+            case ("DropSand"):
+                new_obj = Spawn(drop_sand_stack, drop_sand);
                 break;
         }
         return new_obj;       
@@ -63,6 +69,14 @@ public class PoolControll : MonoBehaviour
         for (int i = 0; i < box_stack.Count; i++)
         {
             fly_box_stack[i].SetActive(false);
+        }
+        for (int i = 0; i < box_stack.Count; i++)
+        {
+            drop_sand_stack[i].SetActive(false);
+        }
+        for (int i = 0; i < box_stack.Count; i++)
+        {
+            sand_stack[i].SetActive(false);
         }
     }
 }

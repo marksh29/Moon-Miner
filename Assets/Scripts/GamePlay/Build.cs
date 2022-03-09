@@ -6,53 +6,46 @@ public class Build : MonoBehaviour
 {
     public bool ready;
     [SerializeField] TextMeshPro txt;
-    [SerializeField] GameObject[] levels, readyLevels;
-    int curLevel, count;
+    [SerializeField] GameObject readyBuild, dropSandObj;
+    [SerializeField] GameObject levels;
+
+    int count;
+    public int buildCount;
     Transform block;
 
     void Start()
     {
         if (ready)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                levels[i].SetActive(false);
-                readyLevels[i].SetActive(true);
-            }            
+            levels.SetActive(false);
             FinalBuild();
-        }            
+        }
+        buildCount = levels.transform.childCount;
     }
     void Update()
     {
 
     }
+    public void BuildCount()
+    {
+        buildCount--;
+    }
     public Transform NextBlock()
     {
-        block = levels[curLevel].transform.GetChild(count);
+        block = levels.transform.GetChild(count);
         count++;
-        if (count == levels[curLevel].transform.childCount)
-        {
-            //levels[curLevel].SetActive(false);
-            //readyLevels[curLevel].SetActive(true);
-            NextLevel();
-        }
-        return block;
-    }
-    void NextLevel()
-    {
-        count = 0;
-        curLevel++;
-        if (curLevel >= levels.Length)
-        {
-            ready = true;
-            //GetComponent<EnemySpawner>().enabled = true;
+        if (count == levels.transform.childCount)
+        {            
             FinalBuild();
         }
-    }
+        return block;
+    }  
     void FinalBuild()
     {
-        txt.text = "READY";
-        gameObject.tag = "Untagged";
-        //dropZone.SetActive(false);
+        levels.SetActive(false);
+        dropSandObj.SetActive(true);
+        readyBuild.SetActive(true);
+        txt.text = "GET SAND";
+        gameObject.tag = "GetSand";
     }    
 }

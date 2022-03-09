@@ -9,6 +9,13 @@ TagManager:
   - Box
   - Drop
   - BagHost
+  - SandDrop
+  - GetSand
+  - DropScrap
+  - AddScrap
+  - Scrap
+  - Sand
+  - AddSand
   layers:
   - Default
   - TransparentFX
@@ -18,9 +25,9 @@ TagManager:
   - UI
   - Cylindr
   - Body
-  - Track
+  - Scrap
   - Ground
-  - Money
+  - Sand
   - 
   - 
   - 

@@ -13,18 +13,19 @@ public class Player : MonoBehaviour
 
     public static Player Instance;
    
-    [Header("Joystic")]
+    [Header("---------------Joystic---------------")]
     public joystickType _joystick;
     public Rigidbody _rigidbody;
     [SerializeField] private FixedJoystick _joystickS;
     [SerializeField] private DynamicJoystick _joystickD;
 
-    [Header("Player")]
-    [SerializeField] private float _moveSpeed;
-    [SerializeField] Transform body;
+    [Header("---------------Player---------------")]
+    [SerializeField] private float _moveSpeed, _wallSpeed;
+    [SerializeField] Transform body, wall;
+    [SerializeField] GameObject waterPrticle;
     //[SerializeField] Transform cylindr;
     //[SerializeField] Transform[] well;
-    [Header("Attack")]
+    [Header("---------------Attack---------------")]
     [SerializeField] float damage;
     [SerializeField] bool attack;
     //public bool move, drop;
@@ -72,8 +73,15 @@ public class Player : MonoBehaviour
 
             if (Joyctick("X") >= 0.1f || Joyctick("Y") >= 0.1f || Joyctick("X") <= -0.1f || Joyctick("Y") <= -0.1f)
             {
-                transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);                         
-            }          
+                transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
+                wall.Rotate(Vector3.right * _wallSpeed * Time.deltaTime);
+                waterPrticle.SetActive(true);
+            }
+            else
+            {
+                wall.Rotate(Vector3.right * _wallSpeed/5 * Time.deltaTime);
+                waterPrticle.SetActive(false);
+            }
         }
     }
     float Joyctick(string name)
