@@ -748,7 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 10
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -5337,7 +5337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 2
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -7740,7 +7740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 2
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -9363,6 +9363,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1531381581367763978, guid: 89cc27e5d1ca40746a6f37ad6a0360bf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531381581367763978, guid: 89cc27e5d1ca40746a6f37ad6a0360bf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531381581367763978, guid: 89cc27e5d1ca40746a6f37ad6a0360bf, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531381581367763978, guid: 89cc27e5d1ca40746a6f37ad6a0360bf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.93
+      objectReference: {fileID: 0}
     - target: {fileID: 4137177533539944111, guid: 89cc27e5d1ca40746a6f37ad6a0360bf, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -9735,7 +9751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 10
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -11156,7 +11172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 10
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -13376,7 +13392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 2
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -14450,7 +14466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 10
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -15736,7 +15752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 10
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -20977,7 +20993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 10
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -22802,7 +22818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 10
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -26100,7 +26116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 2
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -26789,7 +26805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 2
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -28543,7 +28559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 2
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -32760,7 +32776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 10
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -34118,7 +34134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 10
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -35523,7 +35539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 2
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -37965,7 +37981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 2
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -41379,7 +41395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 2
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -42060,7 +42076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  life: 2
+  life: 1.5
   getDamage: 0
   force: 0
   mat: {fileID: 0}
@@ -44500,7 +44516,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149359437096}
   m_LocalRotation: {x: -0.7071068, y: -0.7071068, z: -0, w: 0}
-  m_LocalPosition: {x: 0.004, y: 0.211, z: 0.633}
+  m_LocalPosition: {x: 0.004, y: 0.211, z: 1.46}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 433198914}
@@ -49202,8 +49218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 919132149359437096}
   minScale: 0.5
-  maxScale: 2
-  addScale: 0.05
+  maxScale: 3
+  addScale: 0.5
   curScale: 0
 --- !u!114 &3742500632146554836
 MonoBehaviour:
