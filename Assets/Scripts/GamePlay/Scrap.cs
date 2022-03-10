@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scrap : MonoBehaviour
 {
-    
+    public int id;
     [SerializeField] float life, getDamage, force;
     public Material mat;
     [SerializeField] Material[] allMats;
@@ -19,12 +19,10 @@ public class Scrap : MonoBehaviour
     }
     void Start()
     {
-        int i = Random.Range(0, transform.childCount);
-        transform.GetChild(i).gameObject.SetActive(true);
-        mat = allMats[i < allMats.Length ? i : 0];
+        id = Random.Range(0, transform.childCount);
+        transform.GetChild(id).gameObject.SetActive(true);
+        mat = allMats[id < allMats.Length ? id : 0];
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(damageOn)
@@ -32,14 +30,10 @@ public class Scrap : MonoBehaviour
             life -= getDamage;
             if (life <= 0)
             {
-                BoxControll.Instance.SpawnFlyScrap(gameObject);
+                BoxControll.Instance.SpawnFlyScrap(this);
                 gameObject.SetActive(false);
             }
-        }
-        //if (GetComponent<Rigidbody>().velocity.sqrMagnitude > 10 || GetComponent<Rigidbody>().velocity.sqrMagnitude < -10)
-        //{
-        //    GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x/10, 0, GetComponent<Rigidbody>().velocity.z/10);
-        //}           
+        }             
     }
     public void Damage(float id, bool bl)
     {

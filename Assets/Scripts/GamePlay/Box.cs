@@ -8,19 +8,22 @@ public class Box : MonoBehaviour
     [SerializeField] float toTargetTime;
     [SerializeField] Transform target;
     public Vector3 upPos;
-   
+
+    private void OnEnable()
+    {
+        int id = Random.Range(0, transform.childCount);
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(i == id ? true : false);
+        }
+    }
     void Start()
     {
-        //rb.isKinematic = false;
+        
     }
-
     public IEnumerator DoMove(float time, Transform trgt)
     {
         target = trgt;
-       
-        //GetComponent<BoxCollider>().enabled = true;
-        //GetComponent<Rigidbody>().isKinematic = false;
-
         transform.parent = target;
         transform.rotation = target.rotation;
 

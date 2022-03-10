@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class FlyBox : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         
-    }   
+    }  
+    public void SetSkin(int id)
+    {
+        transform.GetChild(id).gameObject.SetActive(true);
+    }
     public void AddBox()
     {
         gameObject.SetActive(false);
