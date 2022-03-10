@@ -16,7 +16,7 @@ public class Scrap : MonoBehaviour
     {
         int i = Random.Range(0, transform.childCount);
         transform.GetChild(i).gameObject.SetActive(true);
-        mat = allMats[i];
+        mat = allMats[i < allMats.Length ? i : 0];
     }
 
     // Update is called once per frame

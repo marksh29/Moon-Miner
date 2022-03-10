@@ -9,13 +9,13 @@ TagManager:
   - Box
   - Drop
   - BagHost
-  - SandDrop
   - GetSand
   - DropScrap
   - AddScrap
   - Scrap
   - Sand
   - AddSand
+  - DropSand
   layers:
   - Default
   - TransparentFX

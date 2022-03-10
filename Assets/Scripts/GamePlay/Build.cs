@@ -9,7 +9,7 @@ public class Build : MonoBehaviour
     [SerializeField] GameObject readyBuild, dropSandObj;
     [SerializeField] GameObject levels;
 
-    int count;
+    [SerializeField] int count;
     public int buildCount;
     Transform block;
 
@@ -35,15 +35,23 @@ public class Build : MonoBehaviour
         block = levels.transform.GetChild(count);
         count++;
         if (count == levels.transform.childCount)
-        {            
-            FinalBuild();
+        {
+            // FinalBuild();
+            StartCoroutine(End());
         }
         return block;
     }  
+    IEnumerator End()
+    {
+        yield return new WaitForSeconds(0.5f);
+        FinalBuild();
+    }
+
     void FinalBuild()
     {
         levels.SetActive(false);
-        dropSandObj.SetActive(true);
+        if(dropSandObj != null)
+            dropSandObj.SetActive(true);
         readyBuild.SetActive(true);
         txt.text = "GET SAND";
         gameObject.tag = "GetSand";

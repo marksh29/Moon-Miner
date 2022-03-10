@@ -16,9 +16,9 @@ public class BoxControll : MonoBehaviour
     [SerializeField] List<Transform> boxPos;
     [SerializeField] List<GameObject> boxObj;
     [SerializeField] Transform startBox;
-    bool drop_on, drop_scrap;
+    bool drop_on, drop_scrap, drop_sand;
 
-    Coroutine lastRoutine, scarpCouroutine;
+    Coroutine lastRoutine, scarpCouroutine, sandCouroutine;
 
     private void Awake()
     {
@@ -50,6 +50,11 @@ public class BoxControll : MonoBehaviour
         {
             drop_on = true;
             lastRoutine = StartCoroutine(DropBox(coll.gameObject.GetComponent<Build>()));
+        }
+        if (coll.gameObject.tag == "DropSand" && !coll.gameObject.GetComponent<Build>().ready)
+        {
+            drop_sand = true;
+            sandCouroutine = StartCoroutine(DropSand(coll.gameObject.GetComponent<Build>()));
         }
         if (coll.gameObject.tag == "DropScrap")
         {
@@ -83,6 +88,12 @@ public class BoxControll : MonoBehaviour
             if(scarpCouroutine != null)
                 StopCoroutine(scarpCouroutine);
         }
+        if (coll.gameObject.tag == "DropSand")
+        {
+            drop_sand = false;
+            if (scarpCouroutine != null)
+                StopCoroutine(sandCouroutine);
+        }
         if (coll.gameObject.tag == "GetSand")
         {
             coll.gameObject.GetComponent<Factoria>().GetSand(false);
@@ -92,20 +103,36 @@ public class BoxControll : MonoBehaviour
     IEnumerator DropBox(Build _build)
     {
         for (int i = boxObj.Count - 1; i >= 0; i--)
-        {
-            Transform box = _build.NextBlock();
-            if (box != null && _build.buildCount > 0)
+        {            
+            if (_build.buildCount > 0 && boxObj[i].tag == "Scrap")
             {
+                Transform box = _build.NextBlock();
                 StartCoroutine(box.transform.position.y < boxObj[i].transform.position.y ? boxObj[i].GetComponent<Box>().DoMove(0.3f, box) : boxObj[i].GetComponent<Box>().DoMove(0, box));
                 _build.BuildCount();
                 boxObj.Remove(boxObj[i]);
-                curBox = boxObj.Count;
             }
             else
                 break;
             Txt();
             yield return new WaitForSeconds(dropSpeed);
         }       
+    }
+    IEnumerator DropSand(Build _build)
+    {
+        for (int i = boxObj.Count - 1; i >= 0; i--)
+        {
+            if (_build.buildCount > 0 && boxObj[i].tag == "Sand")
+            {
+                Transform box = _build.NextBlock();
+                StartCoroutine(box.transform.position.y < boxObj[i].transform.position.y ? boxObj[i].GetComponent<Box>().DoMove(0.3f, box) : boxObj[i].GetComponent<Box>().DoMove(0, box));
+                _build.BuildCount();
+                boxObj.Remove(boxObj[i]);
+            }
+            else
+                break;
+            Txt();
+            yield return new WaitForSeconds(dropSpeed);
+        }
     }
     IEnumerator DropScrap(Transform _pos)
     {
@@ -114,8 +141,7 @@ public class BoxControll : MonoBehaviour
             if(boxObj[i].tag == "Scrap")
             {
                 StartCoroutine(_pos.transform.position.y > boxObj[i].transform.position.y ? boxObj[i].GetComponent<Box>().DoMove(0.3f, _pos) : boxObj[i].GetComponent<Box>().DoMove(0.01f, _pos));
-                boxObj.Remove(boxObj[i]);
-                curBox = boxObj.Count;
+                boxObj.Remove(boxObj[i]);                
             }
             Txt();
             yield return new WaitForSeconds(dropSpeed);           
@@ -129,18 +155,17 @@ public class BoxControll : MonoBehaviour
         obj.transform.position = boxPos[curBox].position;
         obj.transform.parent = boxPos[curBox];
         obj.transform.rotation = boxPos[curBox].rotation;
-        curBox = boxObj.Count;
         Txt();
     }       
     public Transform AddSand(GameObject obj)
     {
         boxObj.Add(obj);
-        curBox = boxObj.Count;
         Txt();
         return boxPos[curBox - 1];
     }
     void Txt()
     {
+        curBox = boxObj.Count;
         boxText.text = curBox.ToString();
     }
 }
