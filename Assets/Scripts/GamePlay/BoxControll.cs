@@ -10,8 +10,9 @@ public class BoxControll : MonoBehaviour
     [SerializeField] float scale;
     [SerializeField] int count_x, count_y, count_z;
     [Header("---------------Game---------------")]
+
     [SerializeField] Text boxText;
-    [SerializeField] float dropSpeed;
+    [SerializeField] float dropSpeed, damage;
     [SerializeField] int curBox, maxBox;
     [SerializeField] List<Transform> boxPos;
     [SerializeField] List<GameObject> boxObj;
@@ -54,26 +55,38 @@ public class BoxControll : MonoBehaviour
         if (coll.gameObject.tag == "DropSand" && !coll.gameObject.GetComponent<Build>().ready)
         {
             drop_sand = true;
-            sandCouroutine = StartCoroutine(DropSand(coll.gameObject.GetComponent<Build>()));
+            sandCouroutine = StartCoroutine(DropSand(coll.gameObject.GetComponent<BuildLand>()));
         }
         if (coll.gameObject.tag == "DropScrap")
         {
             drop_scrap = true;
             scarpCouroutine = StartCoroutine(DropScrap(coll.gameObject.transform.parent.gameObject.GetComponent<Factoria>().dropScrapPos));
         }
-        if (coll.gameObject.tag == "Box" && curBox < maxBox)
-        {
-            coll.gameObject.SetActive(false);
-            GameObject obj = PoolControll.Instance.Spawn("FlyBox");
-            obj.transform.parent = transform;
-            obj.GetComponent<MeshRenderer>().sharedMaterial = coll.gameObject.GetComponent<Scrap>().mat;
-            obj.transform.position = transform.position;
-        }
         if (coll.gameObject.tag == "GetSand")
         {
             coll.gameObject.GetComponent<Factoria>().GetSand(true);
         }
+        if (coll.gameObject.tag == "Box")// && curBox < maxBox)
+        {
+            coll.gameObject.GetComponent<Scrap>().Damage(damage, true);
+        }
     }
+    //private void OnCollisionStay(Collision coll)
+    //{
+    //    if (coll.gameObject.tag == "Box")// && curBox < maxBox)
+    //    {
+    //        coll.gameObject.GetComponent<Scrap>().Damage(damage);           
+    //    }
+    //}
+    public void SpawnFlyScrap(GameObject objt)
+    {
+        GameObject obj = PoolControll.Instance.Spawn("FlyBox");
+        obj.transform.parent = transform;
+        obj.GetComponent<MeshRenderer>().sharedMaterial = objt.GetComponent<Scrap>().mat;
+        obj.transform.position = transform.position;
+    }
+
+
     private void OnTriggerExit(Collider coll)
     {
         if (coll.gameObject.tag == "Drop")
@@ -98,6 +111,10 @@ public class BoxControll : MonoBehaviour
         {
             coll.gameObject.GetComponent<Factoria>().GetSand(false);
         }
+        if (coll.gameObject.tag == "Box")// && curBox < maxBox)
+        {
+            coll.gameObject.GetComponent<Scrap>().Damage(damage, false);
+        }
     }
 
     IEnumerator DropBox(Build _build)
@@ -117,7 +134,7 @@ public class BoxControll : MonoBehaviour
             yield return new WaitForSeconds(dropSpeed);
         }       
     }
-    IEnumerator DropSand(Build _build)
+    IEnumerator DropSand(BuildLand _build)
     {
         for (int i = boxObj.Count - 1; i >= 0; i--)
         {

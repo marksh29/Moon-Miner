@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class Build : MonoBehaviour
+
+public class BuildLand : MonoBehaviour
 {
     public bool ready;
     [SerializeField] TextMeshPro txt;
-    [SerializeField] GameObject readyBuild, dropSandObj;
+    [SerializeField] GameObject readyBuild;
     [SerializeField] GameObject levels;
 
     [SerializeField] int count;
@@ -36,11 +37,10 @@ public class Build : MonoBehaviour
         count++;
         if (count == levels.transform.childCount)
         {
-            // FinalBuild();
             StartCoroutine(End());
         }
         return block;
-    }  
+    }
     IEnumerator End()
     {
         yield return new WaitForSeconds(0.5f);
@@ -50,9 +50,7 @@ public class Build : MonoBehaviour
     void FinalBuild()
     {
         levels.SetActive(false);
-        dropSandObj.SetActive(true);
         readyBuild.SetActive(true);
-        txt.text = "GET SAND";
-        gameObject.tag = "GetSand";
-    }    
+        txt.transform.parent.gameObject.SetActive(false);
+    }
 }

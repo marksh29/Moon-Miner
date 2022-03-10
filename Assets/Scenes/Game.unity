@@ -710,6 +710,7 @@ GameObject:
   - component: {fileID: 16866115}
   - component: {fileID: 16866114}
   - component: {fileID: 16866118}
+  - component: {fileID: 16866119}
   m_Layer: 8
   m_Name: Scrap (6)
   m_TagString: Box
@@ -790,8 +791,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16866112}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -808,10 +809,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 10
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &16866118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -820,14 +825,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16866112}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &16866119
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16866112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &17254902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2572,11 +2590,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc55c3b2d23f1d34b84c1a9868a2f039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ready: 0
+  ready: 1
   txt: {fileID: 914784135}
   readyBuild: {fileID: 2337783061299239698}
   dropSandObj: {fileID: 1767514126}
   levels: {fileID: 336065803}
+  count: 0
   buildCount: 0
 --- !u!65 &75185329
 BoxCollider:
@@ -4069,6 +4088,7 @@ GameObject:
   - component: {fileID: 135189041}
   - component: {fileID: 135189040}
   - component: {fileID: 135189044}
+  - component: {fileID: 135189045}
   m_Layer: 8
   m_Name: Scrap (26)
   m_TagString: Box
@@ -4157,8 +4177,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135189038}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -4175,10 +4195,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &135189044
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4187,14 +4211,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135189038}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &135189045
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135189038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &136929673
 GameObject:
   m_ObjectHideFlags: 0
@@ -7250,6 +7287,7 @@ GameObject:
   - component: {fileID: 245834334}
   - component: {fileID: 245834333}
   - component: {fileID: 245834337}
+  - component: {fileID: 245834338}
   m_Layer: 8
   m_Name: Scrap (13)
   m_TagString: Box
@@ -7330,8 +7368,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245834331}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -7348,10 +7386,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &245834337
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7360,14 +7402,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245834331}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &245834338
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245834331}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &248175433
 GameObject:
   m_ObjectHideFlags: 0
@@ -7477,6 +7532,7 @@ GameObject:
   - component: {fileID: 252659734}
   - component: {fileID: 252659733}
   - component: {fileID: 252659737}
+  - component: {fileID: 252659738}
   m_Layer: 8
   m_Name: Scrap (27)
   m_TagString: Box
@@ -7565,8 +7621,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252659731}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -7583,10 +7639,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &252659737
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7595,14 +7655,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252659731}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &252659738
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252659731}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1001 &253401392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9236,6 +9309,7 @@ GameObject:
   - component: {fileID: 297733724}
   - component: {fileID: 297733723}
   - component: {fileID: 297733725}
+  - component: {fileID: 297733726}
   m_Layer: 8
   m_Name: Scrap
   m_TagString: Box
@@ -9250,8 +9324,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297733719}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -9268,10 +9342,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 10
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!4 &297733722
 Transform:
   m_ObjectHideFlags: 0
@@ -9346,14 +9424,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297733719}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &297733726
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297733719}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &297993146
 GameObject:
   m_ObjectHideFlags: 0
@@ -10614,6 +10705,7 @@ GameObject:
   - component: {fileID: 360395685}
   - component: {fileID: 360395684}
   - component: {fileID: 360395688}
+  - component: {fileID: 360395689}
   m_Layer: 8
   m_Name: Scrap (17)
   m_TagString: Box
@@ -10694,8 +10786,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360395682}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -10712,10 +10804,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &360395688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10724,14 +10820,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360395682}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &360395689
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360395682}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &363224647
 GameObject:
   m_ObjectHideFlags: 0
@@ -12227,6 +12336,7 @@ MonoBehaviour:
   count_z: 3
   boxText: {fileID: 1450880235928686234}
   dropSpeed: 0.1
+  damage: 0.1
   curBox: 0
   maxBox: 0
   boxPos: []
@@ -13698,6 +13808,7 @@ GameObject:
   - component: {fileID: 454235080}
   - component: {fileID: 454235079}
   - component: {fileID: 454235083}
+  - component: {fileID: 454235084}
   m_Layer: 8
   m_Name: Scrap (8)
   m_TagString: Box
@@ -13778,8 +13889,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454235077}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -13796,10 +13907,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 10
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &454235083
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13808,14 +13923,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454235077}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &454235084
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454235077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &457029613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 42374998994033419, guid: 89cc27e5d1ca40746a6f37ad6a0360bf, type: 3}
@@ -14049,7 +14177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 461965728}
   - component: {fileID: 461965727}
-  - component: {fileID: 461965726}
+  - component: {fileID: 461965725}
   m_Layer: 0
   m_Name: DropLand
   m_TagString: DropSand
@@ -14057,7 +14185,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &461965726
+--- !u!114 &461965725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14066,14 +14194,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 461965724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc55c3b2d23f1d34b84c1a9868a2f039, type: 3}
+  m_Script: {fileID: 11500000, guid: 467cb40997b9f244fa4aa39be996e668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ready: 0
+  ready: 1
   txt: {fileID: 1527134281}
   readyBuild: {fileID: 1278145419}
-  dropSandObj: {fileID: 0}
   levels: {fileID: 419247798}
+  count: 0
   buildCount: 0
 --- !u!65 &461965727
 BoxCollider:
@@ -15740,6 +15868,7 @@ GameObject:
   - component: {fileID: 507846968}
   - component: {fileID: 507846967}
   - component: {fileID: 507846972}
+  - component: {fileID: 507846973}
   m_Layer: 8
   m_Name: Scrap (2)
   m_TagString: Box
@@ -15804,8 +15933,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507846966}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -15822,10 +15951,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 10
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!4 &507846971
 Transform:
   m_ObjectHideFlags: 0
@@ -15850,14 +15983,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507846966}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &507846973
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507846966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1001 &508339274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19128,6 +19274,7 @@ GameObject:
   - component: {fileID: 615528534}
   - component: {fileID: 615528533}
   - component: {fileID: 615528537}
+  - component: {fileID: 615528538}
   m_Layer: 8
   m_Name: Scrap (19)
   m_TagString: Box
@@ -19208,8 +19355,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615528531}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -19226,10 +19373,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &615528537
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19238,14 +19389,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615528531}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &615528538
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615528531}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &619631561
 GameObject:
   m_ObjectHideFlags: 0
@@ -21482,6 +21646,7 @@ GameObject:
   - component: {fileID: 690354690}
   - component: {fileID: 690354689}
   - component: {fileID: 690354694}
+  - component: {fileID: 690354695}
   m_Layer: 8
   m_Name: Scrap (1)
   m_TagString: Box
@@ -21546,8 +21711,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690354688}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -21564,10 +21729,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 10
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!4 &690354693
 Transform:
   m_ObjectHideFlags: 0
@@ -21592,14 +21761,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690354688}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &690354695
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690354688}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1001 &694766413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23349,6 +23531,7 @@ GameObject:
   - component: {fileID: 759943327}
   - component: {fileID: 759943326}
   - component: {fileID: 759943331}
+  - component: {fileID: 759943332}
   m_Layer: 8
   m_Name: Scrap (4)
   m_TagString: Box
@@ -23413,8 +23596,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759943325}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -23431,10 +23614,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 10
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!4 &759943330
 Transform:
   m_ObjectHideFlags: 0
@@ -23459,14 +23646,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759943325}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &759943332
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759943325}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1001 &763889026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25257,6 +25457,7 @@ GameObject:
   - component: {fileID: 827704991}
   - component: {fileID: 827704990}
   - component: {fileID: 827704994}
+  - component: {fileID: 827704995}
   m_Layer: 8
   m_Name: Scrap (21)
   m_TagString: Box
@@ -25345,8 +25546,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827704988}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -25363,10 +25564,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &827704994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25375,14 +25580,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827704988}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &827704995
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827704988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &830099541
 GameObject:
   m_ObjectHideFlags: 0
@@ -25814,6 +26032,7 @@ GameObject:
   - component: {fileID: 843999042}
   - component: {fileID: 843999041}
   - component: {fileID: 843999045}
+  - component: {fileID: 843999046}
   m_Layer: 8
   m_Name: Scrap (30)
   m_TagString: Box
@@ -25902,8 +26121,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843999039}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -25920,10 +26139,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &843999045
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25932,14 +26155,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843999039}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &843999046
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843999039}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &851565588
 GameObject:
   m_ObjectHideFlags: 0
@@ -29254,6 +29490,7 @@ GameObject:
   - component: {fileID: 940135695}
   - component: {fileID: 940135694}
   - component: {fileID: 940135698}
+  - component: {fileID: 940135699}
   m_Layer: 8
   m_Name: Scrap (24)
   m_TagString: Box
@@ -29342,8 +29579,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940135692}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -29360,10 +29597,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &940135698
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29372,14 +29613,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940135692}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &940135699
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940135692}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &941118206
 GameObject:
   m_ObjectHideFlags: 0
@@ -29792,6 +30046,7 @@ GameObject:
   - component: {fileID: 947244837}
   - component: {fileID: 947244836}
   - component: {fileID: 947244840}
+  - component: {fileID: 947244841}
   m_Layer: 8
   m_Name: Scrap (20)
   m_TagString: Box
@@ -29880,8 +30135,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947244834}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -29898,10 +30153,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &947244840
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29910,14 +30169,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947244834}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &947244841
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947244834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &949530882
 GameObject:
   m_ObjectHideFlags: 0
@@ -30836,6 +31108,7 @@ GameObject:
   - component: {fileID: 986371756}
   - component: {fileID: 986371755}
   - component: {fileID: 986371759}
+  - component: {fileID: 986371760}
   m_Layer: 8
   m_Name: Scrap (23)
   m_TagString: Box
@@ -30924,8 +31197,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986371753}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -30942,10 +31215,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &986371759
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30954,14 +31231,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986371753}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &986371760
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986371753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!4 &986945162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 42fea8071038e60448ff8ac49d7a2ff4, type: 3}
@@ -31445,6 +31735,7 @@ GameObject:
   - component: {fileID: 996112695}
   - component: {fileID: 996112694}
   - component: {fileID: 996112699}
+  - component: {fileID: 996112700}
   m_Layer: 8
   m_Name: Scrap (3)
   m_TagString: Box
@@ -31509,8 +31800,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996112693}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -31527,10 +31818,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 10
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!4 &996112698
 Transform:
   m_ObjectHideFlags: 0
@@ -31555,14 +31850,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996112693}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &996112700
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996112693}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &997318200
 GameObject:
   m_ObjectHideFlags: 0
@@ -32872,6 +33180,7 @@ GameObject:
   - component: {fileID: 1036428253}
   - component: {fileID: 1036428252}
   - component: {fileID: 1036428256}
+  - component: {fileID: 1036428257}
   m_Layer: 8
   m_Name: Scrap (31)
   m_TagString: Box
@@ -32960,8 +33269,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036428250}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -32978,10 +33287,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1036428256
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32990,14 +33303,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036428250}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1036428257
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036428250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1041156599
 GameObject:
   m_ObjectHideFlags: 0
@@ -34162,6 +34488,7 @@ GameObject:
   - component: {fileID: 1071944146}
   - component: {fileID: 1071944145}
   - component: {fileID: 1071944149}
+  - component: {fileID: 1071944150}
   m_Layer: 8
   m_Name: Scrap (5)
   m_TagString: Box
@@ -34242,8 +34569,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071944143}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -34260,10 +34587,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 10
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1071944149
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34272,14 +34603,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071944143}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1071944150
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071944143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1074475879
 GameObject:
   m_ObjectHideFlags: 0
@@ -34294,6 +34638,7 @@ GameObject:
   - component: {fileID: 1074475882}
   - component: {fileID: 1074475881}
   - component: {fileID: 1074475885}
+  - component: {fileID: 1074475886}
   m_Layer: 8
   m_Name: Scrap (35)
   m_TagString: Box
@@ -34382,8 +34727,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074475879}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -34400,10 +34745,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1074475885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34412,14 +34761,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074475879}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1074475886
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074475879}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1076099630
 GameObject:
   m_ObjectHideFlags: 0
@@ -35311,6 +35673,7 @@ GameObject:
   - component: {fileID: 1105947792}
   - component: {fileID: 1105947791}
   - component: {fileID: 1105947795}
+  - component: {fileID: 1105947796}
   m_Layer: 8
   m_Name: Scrap (36)
   m_TagString: Box
@@ -35399,8 +35762,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105947789}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -35417,10 +35780,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1105947795
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35429,14 +35796,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105947789}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1105947796
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105947789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1110062318
 GameObject:
   m_ObjectHideFlags: 0
@@ -36945,6 +37325,7 @@ GameObject:
   - component: {fileID: 1182463151}
   - component: {fileID: 1182463150}
   - component: {fileID: 1182463154}
+  - component: {fileID: 1182463155}
   m_Layer: 8
   m_Name: Scrap (22)
   m_TagString: Box
@@ -37033,8 +37414,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182463148}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -37051,10 +37432,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1182463154
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37063,14 +37448,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1182463148}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1182463155
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182463148}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1001 &1185747881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37520,6 +37918,7 @@ GameObject:
   - component: {fileID: 1205623527}
   - component: {fileID: 1205623526}
   - component: {fileID: 1205623530}
+  - component: {fileID: 1205623531}
   m_Layer: 8
   m_Name: Scrap (33)
   m_TagString: Box
@@ -37608,8 +38007,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205623524}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -37626,10 +38025,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1205623530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37638,14 +38041,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205623524}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1205623531
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205623524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1206304730
 GameObject:
   m_ObjectHideFlags: 0
@@ -38630,6 +39046,7 @@ GameObject:
   - component: {fileID: 1224438699}
   - component: {fileID: 1224438698}
   - component: {fileID: 1224438702}
+  - component: {fileID: 1224438703}
   m_Layer: 8
   m_Name: Scrap (14)
   m_TagString: Box
@@ -38710,8 +39127,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224438696}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -38728,10 +39145,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1224438702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38740,14 +39161,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224438696}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1224438703
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224438696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1230337466
 GameObject:
   m_ObjectHideFlags: 0
@@ -39319,6 +39753,7 @@ GameObject:
   - component: {fileID: 1246123060}
   - component: {fileID: 1246123059}
   - component: {fileID: 1246123063}
+  - component: {fileID: 1246123064}
   m_Layer: 8
   m_Name: Scrap (32)
   m_TagString: Box
@@ -39407,8 +39842,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246123057}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -39425,10 +39860,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1246123063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -39437,14 +39876,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246123057}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1246123064
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246123057}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1247319858
 GameObject:
   m_ObjectHideFlags: 0
@@ -39736,6 +40188,7 @@ GameObject:
   - component: {fileID: 1257868863}
   - component: {fileID: 1257868862}
   - component: {fileID: 1257868866}
+  - component: {fileID: 1257868867}
   m_Layer: 8
   m_Name: Scrap (16)
   m_TagString: Box
@@ -39816,8 +40269,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257868860}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -39834,10 +40287,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1257868866
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -39846,14 +40303,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257868860}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1257868867
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257868860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1258164977
 GameObject:
   m_ObjectHideFlags: 0
@@ -40109,6 +40579,7 @@ GameObject:
   - component: {fileID: 1267618809}
   - component: {fileID: 1267618808}
   - component: {fileID: 1267618812}
+  - component: {fileID: 1267618813}
   m_Layer: 8
   m_Name: Scrap (25)
   m_TagString: Box
@@ -40197,8 +40668,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267618806}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -40215,10 +40686,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1267618812
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40227,14 +40702,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267618806}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1267618813
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267618806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1278145419
 GameObject:
   m_ObjectHideFlags: 0
@@ -42246,6 +42734,7 @@ GameObject:
   - component: {fileID: 1356424156}
   - component: {fileID: 1356424155}
   - component: {fileID: 1356424159}
+  - component: {fileID: 1356424160}
   m_Layer: 8
   m_Name: Scrap (15)
   m_TagString: Box
@@ -42326,8 +42815,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356424153}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -42344,10 +42833,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1356424159
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42356,14 +42849,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356424153}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1356424160
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356424153}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1360257960
 GameObject:
   m_ObjectHideFlags: 0
@@ -47958,6 +48464,7 @@ GameObject:
   - component: {fileID: 1556691064}
   - component: {fileID: 1556691063}
   - component: {fileID: 1556691067}
+  - component: {fileID: 1556691068}
   m_Layer: 8
   m_Name: Scrap (7)
   m_TagString: Box
@@ -48038,8 +48545,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556691061}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -48056,10 +48563,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 10
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1556691067
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48068,14 +48579,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556691061}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1556691068
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556691061}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1558954790
 GameObject:
   m_ObjectHideFlags: 0
@@ -49983,6 +50507,7 @@ GameObject:
   - component: {fileID: 1598882597}
   - component: {fileID: 1598882596}
   - component: {fileID: 1598882600}
+  - component: {fileID: 1598882601}
   m_Layer: 8
   m_Name: Scrap (9)
   m_TagString: Box
@@ -50063,8 +50588,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598882594}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -50081,10 +50606,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 10
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1598882600
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -50093,14 +50622,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598882594}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1598882601
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598882594}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1001 &1599570351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52190,6 +52732,7 @@ GameObject:
   - component: {fileID: 1660630260}
   - component: {fileID: 1660630259}
   - component: {fileID: 1660630263}
+  - component: {fileID: 1660630264}
   m_Layer: 8
   m_Name: Scrap (18)
   m_TagString: Box
@@ -52270,8 +52813,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660630257}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -52288,10 +52831,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1660630263
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -52300,14 +52847,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660630257}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1660630264
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660630257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1662896395
 GameObject:
   m_ObjectHideFlags: 0
@@ -53104,6 +53664,7 @@ GameObject:
   - component: {fileID: 1682002029}
   - component: {fileID: 1682002028}
   - component: {fileID: 1682002032}
+  - component: {fileID: 1682002033}
   m_Layer: 8
   m_Name: Scrap (28)
   m_TagString: Box
@@ -53192,8 +53753,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682002026}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -53210,10 +53771,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1682002032
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -53222,14 +53787,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682002026}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1682002033
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682002026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1682268052
 GameObject:
   m_ObjectHideFlags: 0
@@ -56139,6 +56717,7 @@ GameObject:
   - component: {fileID: 1806154105}
   - component: {fileID: 1806154104}
   - component: {fileID: 1806154108}
+  - component: {fileID: 1806154109}
   m_Layer: 8
   m_Name: Scrap (12)
   m_TagString: Box
@@ -56219,8 +56798,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806154102}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -56237,10 +56816,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1806154108
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -56249,14 +56832,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806154102}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1806154109
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806154102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1806453347
 GameObject:
   m_ObjectHideFlags: 0
@@ -56271,6 +56867,7 @@ GameObject:
   - component: {fileID: 1806453350}
   - component: {fileID: 1806453349}
   - component: {fileID: 1806453353}
+  - component: {fileID: 1806453354}
   m_Layer: 8
   m_Name: Scrap (29)
   m_TagString: Box
@@ -56359,8 +56956,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806453347}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -56377,10 +56974,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1806453353
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -56389,14 +56990,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806453347}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1806453354
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806453347}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1807568676
 GameObject:
   m_ObjectHideFlags: 0
@@ -61513,6 +62127,7 @@ GameObject:
   - component: {fileID: 1984948533}
   - component: {fileID: 1984948532}
   - component: {fileID: 1984948536}
+  - component: {fileID: 1984948537}
   m_Layer: 8
   m_Name: Scrap (11)
   m_TagString: Box
@@ -61593,8 +62208,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984948530}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -61611,10 +62226,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &1984948536
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -61623,14 +62242,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984948530}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &1984948537
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984948530}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &1986973377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 888227567118388827, guid: 89cc27e5d1ca40746a6f37ad6a0360bf, type: 3}
@@ -62635,6 +63267,7 @@ GameObject:
   - component: {fileID: 2016452603}
   - component: {fileID: 2016452602}
   - component: {fileID: 2016452606}
+  - component: {fileID: 2016452607}
   m_Layer: 8
   m_Name: Scrap (10)
   m_TagString: Box
@@ -62715,8 +63348,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016452600}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.58, y: 1, z: 0.52}
@@ -62733,10 +63366,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &2016452606
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62745,14 +63382,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016452600}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &2016452607
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016452600}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1001 &2017334453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64878,6 +65528,7 @@ GameObject:
   - component: {fileID: 2101375808}
   - component: {fileID: 2101375807}
   - component: {fileID: 2101375811}
+  - component: {fileID: 2101375812}
   m_Layer: 8
   m_Name: Scrap (34)
   m_TagString: Box
@@ -64966,8 +65617,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101375805}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 9a35734b0d463b646abcf99be939ef87, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1, z: 0.3}
@@ -64984,10 +65635,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3530a397957ffbb43acf1bb5fe412abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
+  getDamage: 0
+  force: 0
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
   - {fileID: 2100000, guid: 9cde4947b727cfa40938906f8fd2f2f3, type: 2}
+  damageOn: 0
 --- !u!54 &2101375811
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64996,14 +65651,27 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101375805}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_Drag: 2
+  m_AngularDrag: 5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!135 &2101375812
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101375805}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6
+  m_Center: {x: -0.000000044703484, y: -0.0022742152, z: -0.000000044703484}
 --- !u!1 &2104103601
 GameObject:
   m_ObjectHideFlags: 0
@@ -70986,13 +71654,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3710663873287032185}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &3742500632146554836
 MonoBehaviour:
@@ -73008,6 +73676,7 @@ MonoBehaviour:
   count_z: 0
   boxText: {fileID: 0}
   dropSpeed: 0
+  damage: 0
   curBox: 0
   maxBox: 0
   boxPos: []

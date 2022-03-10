@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
     {
         if (Controll.Instance._state == "Game")
         {
-            //cylindr.Rotate(-Vector3.up * _rotSpeed * Time.deltaTime);
+            //cylindr.Rotate(-Vector3.up * _rotSpeed * Time.deltaTime);            
             _rigidbody.velocity = new Vector3(Joyctick("X") * _moveSpeed, 0, Joyctick("Y") * _moveSpeed);
 
             if (Joyctick("X") >= 0.1f || Joyctick("Y") >= 0.1f || Joyctick("X") <= -0.1f || Joyctick("Y") <= -0.1f)
@@ -79,6 +79,8 @@ public class Player : MonoBehaviour
             }
             else
             {
+                //_rigidbody.velocity = new Vector3(0, 0, 0);
+                //_rigidbody.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
                 wall.Rotate(Vector3.right * _wallSpeed/5 * Time.deltaTime);
                 waterPrticle.SetActive(false);
             }
