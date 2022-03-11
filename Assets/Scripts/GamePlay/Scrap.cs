@@ -39,7 +39,7 @@ public class Scrap : MonoBehaviour
     {
         if(bl)
         {
-            Vector3 vect = player.position - transform.position;
+            Vector3 vect = transform.position - player.position;
             GetComponent<Rigidbody>().AddForce(new Vector3(vect.x, vect.y + forceUp, vect.z) * force, ForceMode.Impulse);
         }
         damageOn = bl;
