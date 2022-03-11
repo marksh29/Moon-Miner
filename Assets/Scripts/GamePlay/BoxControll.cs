@@ -11,7 +11,7 @@ public class BoxControll : MonoBehaviour
     [SerializeField] float scale;
     [SerializeField] int count_x, count_y, count_z;
     [Header("---------------Game---------------")]
-    [SerializeField] Transform startBox;
+    [SerializeField] Transform startBox, barrel;
     [SerializeField] Text scrapText, sandText;
     [SerializeField] float dropSpeed, damage;
     [SerializeField] int curBox, maxBox, scrapCount, sandCount;
@@ -53,7 +53,7 @@ public class BoxControll : MonoBehaviour
             drop_on = true;
             lastRoutine = StartCoroutine(DropBox(coll.gameObject.GetComponent<Build>()));
         }
-        if (coll.gameObject.tag == "DropSand")
+        if (coll.gameObject.tag == "DropSand" && sandCount > 0)
         {
             drop_sand = true;
             sandCouroutine = StartCoroutine(DropSand(coll.gameObject.GetComponent<BuildLand>()));
@@ -68,9 +68,12 @@ public class BoxControll : MonoBehaviour
         //    coll.gameObject.GetComponent<Factoria>().GetSand(true);
         //}
         if (coll.gameObject.tag == "DropZone")
-        {            
-            drop_scrap = true;
-            scarpCouroutine = StartCoroutine(DropScrap(coll.gameObject.transform.parent.gameObject.GetComponent<Factoria>().dropScrapPos));
+        {
+            if (scrapCount > 0)
+            {
+                drop_scrap = true;
+                scarpCouroutine = StartCoroutine(DropScrap(coll.gameObject.transform.parent));
+            }           
             coll.gameObject.transform.parent.gameObject.GetComponent<Factoria>().GetSand(true);
         }      
         if (coll.gameObject.tag == "Box")// && curBox < maxBox)
@@ -99,11 +102,11 @@ public class BoxControll : MonoBehaviour
         if (coll.gameObject.tag == "DropSand")
         {
             drop_sand = false;
-            if (scarpCouroutine != null)
+            if (sandCouroutine != null)
                 StopCoroutine(sandCouroutine);
         }
         if (coll.gameObject.tag == "DropZone")
-        {
+        {           
             drop_scrap = false;
             if (scarpCouroutine != null)
                 StopCoroutine(scarpCouroutine);
@@ -193,17 +196,26 @@ public class BoxControll : MonoBehaviour
     }
     IEnumerator DropScrap(Transform _pos)
     {
-        for (int i = scrapCount; i > 0; i--)
-        {
-            GameObject scrap = PoolControll.Instance.Spawn("Box");
-            scrap.transform.position = startBox.transform.parent.position;
-            //StartCoroutine(_pos.transform.position.y > scrap.transform.position.y ? scrap.GetComponent<Box>().DoMove(0.3f, _pos) : scrap.GetComponent<Box>().DoMove(0.01f, _pos));
-            StartCoroutine(scrap.GetComponent<Box>().DoMove(0.3f, _pos));
-            scrapCount--;
-            barCtrl.SetScale(scrapCount);
-            Txt();
-            yield return new WaitForSeconds(dropSpeed);
-        }
+        GameObject scrap = PoolControll.Instance.Spawn("BarrelDrop");
+        scrap.transform.parent = barrel;
+        scrap.transform.position = barrel.position;
+        scrap.transform.rotation = barrel.rotation;
+        scrap.transform.parent = null;
+        scrap.GetComponent<BarrelDrop>().StartDrop(_pos, scrapCount, barrel.localScale.x);
+        scrapCount = 0;
+        barCtrl.SetScale(scrapCount);
+        yield return new WaitForSeconds(dropSpeed);
+        //for (int i = scrapCount; i > 0; i--)
+        //{
+        //    GameObject scrap = PoolControll.Instance.Spawn("Box");
+        //    scrap.transform.position = startBox.transform.parent.position;
+        //    //StartCoroutine(_pos.transform.position.y > scrap.transform.position.y ? scrap.GetComponent<Box>().DoMove(0.3f, _pos) : scrap.GetComponent<Box>().DoMove(0.01f, _pos));
+        //    StartCoroutine(scrap.GetComponent<Box>().DoMove(0.3f, _pos));
+        //    scrapCount--;
+        //    barCtrl.SetScale(scrapCount);
+        //    Txt();
+        //    yield return new WaitForSeconds(dropSpeed);
+        //}
         //for (int i = boxObj.Count - 1; i >= 0; i--)
         //{
         //    if(boxObj[i].tag == "Scrap")
