@@ -180,9 +180,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   count: 55
-  force: 3
+  force: 3.5
   removeScale: 0
-  spawnTime: 0.2
+  spawnTime: 0.1
 --- !u!1001 &1219577365557095397
 PrefabInstance:
   m_ObjectHideFlags: 0
