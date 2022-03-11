@@ -11,13 +11,13 @@ public class BoxControll : MonoBehaviour
     [SerializeField] float scale;
     [SerializeField] int count_x, count_y, count_z;
     [Header("---------------Game---------------")]
-
-    [SerializeField] Text boxText;
+    [SerializeField] Transform startBox;
+    [SerializeField] Text scrapText, sandText;
     [SerializeField] float dropSpeed, damage;
-    [SerializeField] int curBox, maxBox, scrapCount;
+    [SerializeField] int curBox, maxBox, scrapCount, sandCount;
     [SerializeField] List<Transform> boxPos;
     [SerializeField] List<GameObject> boxObj;
-    [SerializeField] Transform startBox;
+    
     bool drop_on, drop_scrap, drop_sand;
 
     Coroutine lastRoutine, scarpCouroutine, sandCouroutine;
@@ -53,42 +53,31 @@ public class BoxControll : MonoBehaviour
             drop_on = true;
             lastRoutine = StartCoroutine(DropBox(coll.gameObject.GetComponent<Build>()));
         }
-        if (coll.gameObject.tag == "DropSand" && !coll.gameObject.GetComponent<Build>().ready)
+        if (coll.gameObject.tag == "DropSand")
         {
             drop_sand = true;
             sandCouroutine = StartCoroutine(DropSand(coll.gameObject.GetComponent<BuildLand>()));
         }
-        if (coll.gameObject.tag == "DropScrap")
-        {
+        //if (coll.gameObject.tag == "DropScrap")
+        //{
+        //    drop_scrap = true;
+        //    scarpCouroutine = StartCoroutine(DropScrap(coll.gameObject.transform.parent.gameObject.GetComponent<Factoria>().dropScrapPos));
+        //}
+        //if (coll.gameObject.tag == "GetSand")
+        //{
+        //    coll.gameObject.GetComponent<Factoria>().GetSand(true);
+        //}
+        if (coll.gameObject.tag == "DropZone")
+        {            
             drop_scrap = true;
             scarpCouroutine = StartCoroutine(DropScrap(coll.gameObject.transform.parent.gameObject.GetComponent<Factoria>().dropScrapPos));
-        }
-        if (coll.gameObject.tag == "GetSand")
-        {
-            coll.gameObject.GetComponent<Factoria>().GetSand(true);
-        }
+            coll.gameObject.transform.parent.gameObject.GetComponent<Factoria>().GetSand(true);
+        }      
         if (coll.gameObject.tag == "Box")// && curBox < maxBox)
         {
             coll.gameObject.GetComponent<Scrap>().Damage(damage, true);
         }
     }
-    //private void OnCollisionStay(Collision coll)
-    //{
-    //    if (coll.gameObject.tag == "Box")// && curBox < maxBox)
-    //    {
-    //        coll.gameObject.GetComponent<Scrap>().Damage(damage);           
-    //    }
-    //}
-    public void SpawnFlyScrap(Scrap objt)
-    {
-        GameObject obj = PoolControll.Instance.Spawn("FlyBox");
-        obj.transform.parent = transform;
-        obj.GetComponent<FlyBox>().SetSkin(objt.id);
-        //obj.GetComponent<MeshRenderer>().sharedMaterial = objt.GetComponent<Scrap>().mat;
-        obj.transform.position = transform.position;
-    }
-
-
     private void OnTriggerExit(Collider coll)
     {
         if (coll.gameObject.tag == "Drop")
@@ -97,26 +86,41 @@ public class BoxControll : MonoBehaviour
             if(lastRoutine != null)
                 StopCoroutine(lastRoutine);
         }
-        if (coll.gameObject.tag == "DropScrap")
-        {
-            drop_scrap = false;
-            if(scarpCouroutine != null)
-                StopCoroutine(scarpCouroutine);
-        }
+        //if (coll.gameObject.tag == "DropScrap")
+        //{
+        //    drop_scrap = false;
+        //    if(scarpCouroutine != null)
+        //        StopCoroutine(scarpCouroutine);
+        //}
+        //if (coll.gameObject.tag == "GetSand")
+        //{
+        //    coll.gameObject.GetComponent<Factoria>().GetSand(false);
+        //}
         if (coll.gameObject.tag == "DropSand")
         {
             drop_sand = false;
             if (scarpCouroutine != null)
                 StopCoroutine(sandCouroutine);
         }
-        if (coll.gameObject.tag == "GetSand")
+        if (coll.gameObject.tag == "DropZone")
         {
-            coll.gameObject.GetComponent<Factoria>().GetSand(false);
-        }
+            drop_scrap = false;
+            if (scarpCouroutine != null)
+                StopCoroutine(scarpCouroutine);
+            coll.gameObject.transform.parent.gameObject.GetComponent<Factoria>().GetSand(false);
+        }       
         if (coll.gameObject.tag == "Box")// && curBox < maxBox)
         {
             coll.gameObject.GetComponent<Scrap>().Damage(damage, false);
         }
+    }
+    public void SpawnFlyScrap(Scrap objt)
+    {
+        GameObject obj = PoolControll.Instance.Spawn("FlyBox");
+        obj.transform.parent = transform;
+        obj.GetComponent<FlyBox>().SetSkin(objt.id);
+        //obj.GetComponent<MeshRenderer>().sharedMaterial = objt.GetComponent<Scrap>().mat;
+        obj.transform.position = transform.position;
     }
 
     IEnumerator DropBox(Build _build)
@@ -142,33 +146,50 @@ public class BoxControll : MonoBehaviour
                 Transform box = _build.NextBlock();
                 GameObject scrap = PoolControll.Instance.Spawn("Box");
                 scrap.transform.position = startBox.transform.parent.position;
-                StartCoroutine(box.transform.position.y < scrap.transform.position.y ? scrap.GetComponent<Box>().DoMove(0.3f, box) : scrap.GetComponent<Box>().DoMove(0, box));
+                //StartCoroutine(box.transform.position.y < scrap.transform.position.y ? scrap.GetComponent<Box>().DoMove(0.3f, box) : scrap.GetComponent<Box>().DoMove(0, box));
+                StartCoroutine(scrap.GetComponent<Box>().DoMove(0.3f, box));
                 _build.BuildCount();
                 scrapCount--;
+                Txt();
                 barCtrl.SetScale(scrapCount);
             }
             else
-                break;
-            Txt();
+                StopCoroutine(lastRoutine);         
             yield return new WaitForSeconds(dropSpeed);
         }
     }
     IEnumerator DropSand(BuildLand _build)
     {
-        for (int i = boxObj.Count - 1; i >= 0; i--)
+        for (int i = sandCount; i > 0; i--)
         {
-            if (_build.buildCount > 0 && boxObj[i].tag == "Sand")
+            if (_build.buildCount > 0)
             {
-                Transform box = _build.NextBlock();
-                StartCoroutine(box.transform.position.y < boxObj[i].transform.position.y ? boxObj[i].GetComponent<Box>().DoMove(0.3f, box) : boxObj[i].GetComponent<Box>().DoMove(0, box));
+                GameObject sand = PoolControll.Instance.Spawn("Sand");
+                sand.transform.position = startBox.transform.parent.position;
+                //StartCoroutine(_build.transform.position.y > sand.transform.position.y ? sand.GetComponent<Box>().DoMove(0.3f, _build.transform) : sand.GetComponent<Box>().DoMove(0.01f, _build.transform));
+                StartCoroutine(sand.GetComponent<Box>().DoMove(0.3f, _build.NextBlock()));
+                sandCount--;
                 _build.BuildCount();
-                boxObj.Remove(boxObj[i]);
+                Txt();
+                yield return new WaitForSeconds(dropSpeed);
             }
             else
-                break;
-            //Txt();
-            yield return new WaitForSeconds(dropSpeed);
+                StopCoroutine(sandCouroutine);
         }
+        //for (int i = boxObj.Count - 1; i >= 0; i--)
+        //{
+        //    if (_build.buildCount > 0 && boxObj[i].tag == "Sand")
+        //    {
+        //        Transform box = _build.NextBlock();
+        //        StartCoroutine(box.transform.position.y < boxObj[i].transform.position.y ? boxObj[i].GetComponent<Box>().DoMove(0.3f, box) : boxObj[i].GetComponent<Box>().DoMove(0, box));
+        //        _build.BuildCount();
+        //        boxObj.Remove(boxObj[i]);
+        //    }
+        //    else
+        //        break;
+        //    //Txt();
+        //    yield return new WaitForSeconds(dropSpeed);
+        //}
     }
     IEnumerator DropScrap(Transform _pos)
     {
@@ -176,9 +197,11 @@ public class BoxControll : MonoBehaviour
         {
             GameObject scrap = PoolControll.Instance.Spawn("Box");
             scrap.transform.position = startBox.transform.parent.position;
-            StartCoroutine(_pos.transform.position.y > scrap.transform.position.y ? scrap.GetComponent<Box>().DoMove(0.3f, _pos) : scrap.GetComponent<Box>().DoMove(0.01f, _pos));
+            //StartCoroutine(_pos.transform.position.y > scrap.transform.position.y ? scrap.GetComponent<Box>().DoMove(0.3f, _pos) : scrap.GetComponent<Box>().DoMove(0.01f, _pos));
+            StartCoroutine(scrap.GetComponent<Box>().DoMove(0.3f, _pos));
             scrapCount--;
             barCtrl.SetScale(scrapCount);
+            Txt();
             yield return new WaitForSeconds(dropSpeed);
         }
         //for (int i = boxObj.Count - 1; i >= 0; i--)
@@ -202,17 +225,27 @@ public class BoxControll : MonoBehaviour
         //obj.transform.rotation = boxPos[curBox].rotation;
         //Txt();
         scrapCount++;
-        barCtrl.SetScale(scrapCount);        
-    }       
-    public Transform AddSand(GameObject obj)
-    {
-        boxObj.Add(obj);
+        barCtrl.SetScale(scrapCount);
         Txt();
-        return boxPos[curBox - 1];
+    }
+    //public Transform AddSand(GameObject obj)
+    //{
+    //    boxObj.Add(obj);
+    //    Txt();
+    //    return boxPos[curBox - 1];
+    //}
+    public Transform SandPos()
+    {
+        return startBox.transform.parent;
+    }
+    public void AddSand()
+    {
+        sandCount++;
+        Txt();
     }
     void Txt()
     {
-        curBox = boxObj.Count;
-        boxText.text = curBox.ToString();
+        scrapText.text = scrapCount.ToString();
+        sandText.text = sandCount.ToString();
     }
 }

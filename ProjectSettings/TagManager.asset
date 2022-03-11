@@ -16,6 +16,7 @@ TagManager:
   - Sand
   - AddSand
   - DropSand
+  - DropZone
   layers:
   - Default
   - TransparentFX

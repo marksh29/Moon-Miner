@@ -8,6 +8,7 @@ public class Box : MonoBehaviour
     [SerializeField] float toTargetTime;
     [SerializeField] Transform target;
     public Vector3 upPos;
+    public bool sand;
 
     private void OnEnable()
     {
@@ -28,8 +29,9 @@ public class Box : MonoBehaviour
         transform.rotation = target.rotation;
 
         Vector3 startPosition = transform.localPosition;
-        Vector3 targetPosition = new Vector3(transform.localPosition.x, transform.localPosition.y < 0 ? 5 : 1, transform.localPosition.z);
-
+        //Vector3 targetPosition = new Vector3(transform.localPosition.x, transform.localPosition.y < 0 ? 5 : 1, transform.localPosition.z);
+        Vector3 targetPosition = new Vector3(0, 0, 0);
+             
         float startTime = Time.realtimeSinceStartup;
         float fraction = 0f;
         while (fraction < 1f)
@@ -38,22 +40,35 @@ public class Box : MonoBehaviour
             transform.localPosition = Vector3.Lerp(startPosition, targetPosition, fraction);
             yield return null;
         }
-        StartCoroutine(MoveToTarget());
-    }
-    public IEnumerator MoveToTarget()
-    {
-        Vector3 startPosition = transform.localPosition;
-        float startTime = Time.realtimeSinceStartup;
-        float fraction = 0f;
-        while (fraction < 1f)
+
+        if (sand)
         {
-            fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / toTargetTime);
-            transform.localPosition = Vector3.Lerp(startPosition, new Vector3(0, 0, 0), fraction);               
-            yield return null;
+            gameObject.SetActive(false);
+            BoxControll.Instance.AddSand();
+            sand = false;
         }
-        transform.localPosition = new Vector3(0, 0, 0);
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        //StartCoroutine(MoveToTarget());
     }
+    //public IEnumerator MoveToTarget()
+    //{
+    //    Vector3 startPosition = transform.localPosition;
+    //    float startTime = Time.realtimeSinceStartup;
+    //    float fraction = 0f;
+    //    while (fraction < 1f)
+    //    {
+    //        fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / toTargetTime);
+    //        transform.localPosition = Vector3.Lerp(startPosition, new Vector3(0, 0, 0), fraction);               
+    //        yield return null;
+    //    }
+    //    transform.localPosition = new Vector3(0, 0, 0);
+    //    transform.rotation = Quaternion.Euler(0, 0, 0);
+
+    //    if(sand)
+    //    {
+    //        gameObject.SetActive(false);
+    //        BoxControll.Instance.AddSand();
+    //    }
+    //}
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "AddScrap")

@@ -11,7 +11,10 @@ public class FlyBox : MonoBehaviour
     }  
     public void SetSkin(int id)
     {
-        transform.GetChild(id).gameObject.SetActive(true);
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(i == id ? true : false);
+        }        
     }
     public void AddBox()
     {

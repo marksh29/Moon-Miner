@@ -13,7 +13,7 @@ public class Controll : MonoBehaviour
     [SerializeField] GameObject[] panels;
 
     [SerializeField] int money;
-    [SerializeField] Text moneyText;
+    [SerializeField] Text scrapText, sandText;
 
     //--- Upgarde---//
 

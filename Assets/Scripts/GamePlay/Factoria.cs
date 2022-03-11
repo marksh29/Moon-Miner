@@ -104,7 +104,8 @@ public class Factoria : MonoBehaviour
     {
         while (boxObj.Count > 0)
         {
-            StartCoroutine(boxObj[boxObj.Count - 1].GetComponent<Box>().DoMove(0.2f, BoxControll.Instance.AddSand(boxObj[boxObj.Count - 1])));
+            boxObj[boxObj.Count - 1].GetComponent<Box>().sand = true;
+            StartCoroutine(boxObj[boxObj.Count - 1].GetComponent<Box>().DoMove(0.2f, BoxControll.Instance.SandPos()));
             boxObj.Remove(boxObj[boxObj.Count - 1]);
             curBox = boxObj.Count;
             yield return new WaitForSeconds(dropSpeed);

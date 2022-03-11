@@ -6,7 +6,7 @@ public class Build : MonoBehaviour
 {
     public bool ready;
     [SerializeField] TextMeshPro txt;
-    [SerializeField] GameObject readyBuild, dropSandObj;
+    [SerializeField] GameObject workBuild, readyBuild, dropSandObj;
     [SerializeField] GameObject levels;
 
     [SerializeField] int count;
@@ -49,10 +49,12 @@ public class Build : MonoBehaviour
 
     void FinalBuild()
     {
+        workBuild.SetActive(false);
         levels.SetActive(false);
         dropSandObj.SetActive(true);
         readyBuild.SetActive(true);
-        txt.text = "GET SAND";
-        gameObject.tag = "GetSand";
+        //txt.text = "GET SAND";
+        //gameObject.tag = "GetSand";
+        GetComponent<BoxCollider>().enabled = false;
     }    
 }
