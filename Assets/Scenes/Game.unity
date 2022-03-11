@@ -733,8 +733,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &16866117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,7 +750,8 @@ MonoBehaviour:
   id: 0
   life: 10
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -767,10 +768,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &16866119
 SphereCollider:
@@ -5322,8 +5323,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &245834336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5339,7 +5340,8 @@ MonoBehaviour:
   id: 0
   life: 2
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -5356,10 +5358,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &245834338
 SphereCollider:
@@ -7725,8 +7727,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &360395687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7742,7 +7744,8 @@ MonoBehaviour:
   id: 0
   life: 2
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -7759,10 +7762,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &360395689
 SphereCollider:
@@ -9720,8 +9723,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &454235082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9737,7 +9740,8 @@ MonoBehaviour:
   id: 0
   life: 10
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -9754,10 +9758,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &454235084
 SphereCollider:
@@ -11141,8 +11145,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &507846970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11158,7 +11162,8 @@ MonoBehaviour:
   id: 0
   life: 10
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -11191,10 +11196,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &507846973
 SphereCollider:
@@ -13361,8 +13366,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &615528536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13378,7 +13383,8 @@ MonoBehaviour:
   id: 0
   life: 2
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -13395,10 +13401,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &615528538
 SphereCollider:
@@ -14435,8 +14441,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &690354692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14452,7 +14458,8 @@ MonoBehaviour:
   id: 0
   life: 10
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -14485,10 +14492,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &690354695
 SphereCollider:
@@ -15721,8 +15728,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &759943329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15738,7 +15745,8 @@ MonoBehaviour:
   id: 0
   life: 10
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -15771,10 +15779,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &759943332
 SphereCollider:
@@ -20962,8 +20970,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &996112697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20979,7 +20987,8 @@ MonoBehaviour:
   id: 0
   life: 10
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -21012,10 +21021,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &996112700
 SphereCollider:
@@ -22787,8 +22796,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &1071944148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22804,7 +22813,8 @@ MonoBehaviour:
   id: 0
   life: 10
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -22821,10 +22831,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &1071944150
 SphereCollider:
@@ -26085,8 +26095,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &1224438701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26102,7 +26112,8 @@ MonoBehaviour:
   id: 0
   life: 2
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -26119,10 +26130,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &1224438703
 SphereCollider:
@@ -26774,8 +26785,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &1257868865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26791,7 +26802,8 @@ MonoBehaviour:
   id: 0
   life: 2
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -26808,10 +26820,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &1257868867
 SphereCollider:
@@ -28528,8 +28540,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &1356424158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28545,7 +28557,8 @@ MonoBehaviour:
   id: 0
   life: 2
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -28562,10 +28575,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &1356424160
 SphereCollider:
@@ -32745,8 +32758,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &1556691066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32762,7 +32775,8 @@ MonoBehaviour:
   id: 0
   life: 10
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -32779,10 +32793,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &1556691068
 SphereCollider:
@@ -34103,8 +34117,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &1598882599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34120,7 +34134,8 @@ MonoBehaviour:
   id: 0
   life: 10
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -34137,10 +34152,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &1598882601
 SphereCollider:
@@ -35508,8 +35523,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &1660630262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35525,7 +35540,8 @@ MonoBehaviour:
   id: 0
   life: 2
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -35542,10 +35558,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &1660630264
 SphereCollider:
@@ -37950,8 +37966,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &1806154107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37967,7 +37983,8 @@ MonoBehaviour:
   id: 0
   life: 2
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -37984,10 +38001,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &1806154109
 SphereCollider:
@@ -41364,8 +41381,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &1984948535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41381,7 +41398,8 @@ MonoBehaviour:
   id: 0
   life: 2
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -41398,10 +41416,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &1984948537
 SphereCollider:
@@ -42045,8 +42063,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58, y: 1, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58, y: 0.5540896, z: 0.52}
+  m_Center: {x: 0, y: 0.2229552, z: 0}
 --- !u!114 &2016452605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42062,7 +42080,8 @@ MonoBehaviour:
   id: 0
   life: 2
   getDamage: 0
-  force: 0
+  force: 1
+  forceUp: 10
   mat: {fileID: 0}
   allMats:
   - {fileID: 2100000, guid: 8c9add472acfef045b795fd550cfa1a6, type: 2}
@@ -42079,10 +42098,10 @@ Rigidbody:
   m_Mass: 5
   m_Drag: 2
   m_AngularDrag: 5
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!135 &2016452607
 SphereCollider:

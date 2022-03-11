@@ -5,7 +5,7 @@ using UnityEngine;
 public class Scrap : MonoBehaviour
 {
     public int id;
-    [SerializeField] float life, getDamage, force;
+    [SerializeField] float life, getDamage, force, forceUp;
     public Material mat;
     [SerializeField] Material[] allMats;
     public bool damageOn;
@@ -40,9 +40,9 @@ public class Scrap : MonoBehaviour
         if(bl)
         {
             Vector3 vect = player.position - transform.position;
-            GetComponent<Rigidbody>().AddForce(vect * force, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(new Vector3(vect.x, vect.y + forceUp, vect.z) * force, ForceMode.Impulse);
         }
         damageOn = bl;
         getDamage = id;
-    }
+    }    
 }
