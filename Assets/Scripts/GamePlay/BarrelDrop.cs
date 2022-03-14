@@ -6,11 +6,13 @@ public class BarrelDrop : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] int count;
-    [SerializeField] float force, removeScale, spawnTime;
-    bool fly;
+    [SerializeField] float force, removeScale, spawnTime, jumpTime, jumpForce;
+    [SerializeField] bool fly, jump;
+    float jumpTm;
 
     private void OnEnable()
     {
+        jump = false;
         fly = true;
         StartCoroutine(FlyOff());
     }
@@ -20,7 +22,16 @@ public class BarrelDrop : MonoBehaviour
     }
     void Update()
     {
-        
+        if (jump)
+        {
+            jumpTm -= Time.deltaTime;
+            if (jumpTm <= 0)
+            {
+                jumpTm = jumpTime;
+                GetComponent<Rigidbody>().isKinematic = false;
+                GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+        }
     }
     public void StartDrop(Transform trg, int cnt, float scale)
     {
@@ -28,7 +39,9 @@ public class BarrelDrop : MonoBehaviour
         count = cnt;
         target = trg;
         removeScale = transform.localScale.x / count;
-        GetComponent<Rigidbody>().AddForce(new Vector3(-1.05f, 2.5f, 0) * force, ForceMode.Impulse);
+        Vector3 _forcePos = trg.position - transform.position;
+        print(_forcePos);
+        GetComponent<Rigidbody>().AddForce(new Vector3(_forcePos.x, 2, _forcePos.z) * force, ForceMode.Impulse);
         GetComponent<Rigidbody>().AddTorque(Vector3.forward * force/3, ForceMode.Impulse);
     }
     IEnumerator StartSpawnBarrel()
@@ -48,15 +61,22 @@ public class BarrelDrop : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground" && !fly)
+        if(collision.gameObject.tag == "Ground")
         {
-            StartCoroutine(StartSpawnBarrel());
-            GetComponent<Rigidbody>().isKinematic = true;
+            if(!fly)
+            {
+                if (!jump)
+                {
+                    StartCoroutine(StartSpawnBarrel());
+                    jump = true;
+                }
+                GetComponent<Rigidbody>().isKinematic = true;
+            }                    
         }
     }
     IEnumerator FlyOff()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.3f);  
         fly = false;
     }
 }
