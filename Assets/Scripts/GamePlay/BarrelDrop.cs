@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BarrelDrop : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] int count;
-    [SerializeField] float force, removeScale, spawnTime, jumpTime, jumpForce;
-    [SerializeField] bool fly, jump;
+    Transform target;
+    int count;
+    [SerializeField] float force, spawnTime, jumpTime, jumpForce;
+    float removeScale; 
+    bool fly, jump;
     float jumpTm;
 
     private void OnEnable()
@@ -40,7 +41,6 @@ public class BarrelDrop : MonoBehaviour
         target = trg;
         removeScale = transform.localScale.x / count;
         Vector3 _forcePos = trg.position - transform.position;
-        print(_forcePos);
         GetComponent<Rigidbody>().AddForce(new Vector3(_forcePos.x, 2, _forcePos.z) * force, ForceMode.Impulse);
         GetComponent<Rigidbody>().AddTorque(Vector3.forward * force/3, ForceMode.Impulse);
     }
