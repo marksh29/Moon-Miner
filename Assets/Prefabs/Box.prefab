@@ -127,10 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eccd0c204c43b940889fefb11394ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 195670425881106380}
-  toTargetTime: 0.3
-  target: {fileID: 0}
   upPos: {x: 0, y: 0, z: 0}
+  sand: 0
+  speed: 10
+  arcHeight: 2
 --- !u!1001 &3304978968090786214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,15 +144,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a5f4d883d004894f917143b68d629c9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a5f4d883d004894f917143b68d629c9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a5f4d883d004894f917143b68d629c9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a5f4d883d004894f917143b68d629c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -222,15 +222,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 42fea8071038e60448ff8ac49d7a2ff4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 42fea8071038e60448ff8ac49d7a2ff4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 42fea8071038e60448ff8ac49d7a2ff4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 42fea8071038e60448ff8ac49d7a2ff4, type: 3}
       propertyPath: m_LocalPosition.x

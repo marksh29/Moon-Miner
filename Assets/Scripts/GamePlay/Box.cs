@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {
-    [SerializeField] Rigidbody rb;
-    [SerializeField] float toTargetTime;
-    [SerializeField] Transform target;
+    //[SerializeField] Rigidbody rb;
+    //[SerializeField] float toTargetTime;
+    //[SerializeField] Transform target;
     public Vector3 upPos;
     public bool sand;
+    bool move;
+
+    [Header("---------New Move----------")]
+    public float speed;
+    Vector3 target;
+    public float arcHeight;
+
+    Vector3 _startPosition;
+    float _stepScale;
+    float _progress;
+
 
     private void OnEnable()
     {
+        move = false;
         int id = Random.Range(0, transform.childCount);
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -22,53 +34,66 @@ public class Box : MonoBehaviour
     {
         
     }
+    private void Update()
+    {
+        if (move)
+        {
+            // Increment our progress from 0 at the start, to 1 when we arrive.
+            _progress = Mathf.Min(_progress + Time.deltaTime * _stepScale, 1.0f);
+
+            // Turn this 0-1 value into a parabola that goes from 0 to 1, then back to 0.
+            float parabola = 1.0f - 4.0f * (_progress - 0.5f) * (_progress - 0.5f);
+
+            // Travel in a straight line from our start position to the target.        
+            Vector3 nextPos = Vector3.Lerp(_startPosition, target, _progress);
+
+            // Then add a vertical arc in excess of this.
+            nextPos.y += parabola * arcHeight;
+
+            // Continue as before.
+            transform.LookAt(nextPos, transform.forward);
+            transform.position = nextPos;
+
+            // I presume you disable/destroy the arrow in Arrived so it doesn't keep arriving.
+            if (_progress == 1.0f)
+                print("end");
+        }       
+    }
+
     public IEnumerator DoMove(float time, Transform trgt)
     {
-        target = trgt;
-        transform.parent = target;
-        transform.rotation = target.rotation;
+        _progress = 0;
+        _startPosition = transform.position;
+        float distance = Vector3.Distance(_startPosition, target);
+        _stepScale = speed / distance;
+        target = trgt.position;
+        move = true;
 
-        Vector3 startPosition = transform.localPosition;
-        //Vector3 targetPosition = new Vector3(transform.localPosition.x, transform.localPosition.y < 0 ? 5 : 1, transform.localPosition.z);
-        Vector3 targetPosition = new Vector3(0, 0, 0);
-             
-        float startTime = Time.realtimeSinceStartup;
-        float fraction = 0f;
-        while (fraction < 1f)
-        {
-            fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
-            transform.localPosition = Vector3.Lerp(startPosition, targetPosition, fraction);
-            yield return null;
-        }
+        yield return new WaitForSeconds(0);
 
-        if (sand)
-        {
-            gameObject.SetActive(false);
-            BoxControll.Instance.AddSand();
-            sand = false;
-        }
-        //StartCoroutine(MoveToTarget());
+        //target = trgt;
+        //transform.parent = target;
+        //transform.rotation = target.rotation;
+
+        //Vector3 startPosition = transform.localPosition;
+        //Vector3 targetPosition = new Vector3(0, 0, 0);
+
+        //float startTime = Time.realtimeSinceStartup;
+        //float fraction = 0f;
+        //while (fraction < 1f)
+        //{
+        //    fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
+        //    transform.localPosition = Vector3.Lerp(startPosition, targetPosition, fraction);
+        //    yield return null;
+        //}
+        //if (sand)
+        //{
+        //    gameObject.SetActive(false);
+        //    BoxControll.Instance.AddSand();
+        //    sand = false;
+        //}
     }
-    //public IEnumerator MoveToTarget()
-    //{
-    //    Vector3 startPosition = transform.localPosition;
-    //    float startTime = Time.realtimeSinceStartup;
-    //    float fraction = 0f;
-    //    while (fraction < 1f)
-    //    {
-    //        fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / toTargetTime);
-    //        transform.localPosition = Vector3.Lerp(startPosition, new Vector3(0, 0, 0), fraction);               
-    //        yield return null;
-    //    }
-    //    transform.localPosition = new Vector3(0, 0, 0);
-    //    transform.rotation = Quaternion.Euler(0, 0, 0);
-
-    //    if(sand)
-    //    {
-    //        gameObject.SetActive(false);
-    //        BoxControll.Instance.AddSand();
-    //    }
-    //}
+   
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "AddScrap")
