@@ -28,7 +28,7 @@ public class BarrelDrop : MonoBehaviour
         count = cnt;
         target = trg;
         removeScale = transform.localScale.x / count;
-        GetComponent<Rigidbody>().AddForce(new Vector3(0, 2, 1) * force, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(new Vector3(-1.05f, 2.5f, 0) * force, ForceMode.Impulse);
         GetComponent<Rigidbody>().AddTorque(Vector3.forward * force/3, ForceMode.Impulse);
     }
     IEnumerator StartSpawnBarrel()
