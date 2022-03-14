@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eccd0c204c43b940889fefb11394ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 2868579100032839847}
-  toTargetTime: 0.3
-  target: {fileID: 0}
   upPos: {x: 0, y: 0, z: 0}
+  sand: 0
+  speed: 30
+  arcHeight: 2

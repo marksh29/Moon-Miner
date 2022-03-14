@@ -56,7 +56,15 @@ public class Box : MonoBehaviour
 
             // I presume you disable/destroy the arrow in Arrived so it doesn't keep arriving.
             if (_progress == 1.0f)
-                print("end");
+            {
+                if (sand)
+                {                   
+                    BoxControll.Instance.AddSand();
+                    sand = false;
+                    gameObject.SetActive(false);
+                }
+                //gameObject.SetActive(false);
+            }     
         }       
     }
 
@@ -68,32 +76,32 @@ public class Box : MonoBehaviour
         _stepScale = speed / distance;
         target = trgt.position;
         move = true;
-
         yield return new WaitForSeconds(0);
-
-        //target = trgt;
-        //transform.parent = target;
-        //transform.rotation = target.rotation;
-
-        //Vector3 startPosition = transform.localPosition;
-        //Vector3 targetPosition = new Vector3(0, 0, 0);
-
-        //float startTime = Time.realtimeSinceStartup;
-        //float fraction = 0f;
-        //while (fraction < 1f)
-        //{
-        //    fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
-        //    transform.localPosition = Vector3.Lerp(startPosition, targetPosition, fraction);
-        //    yield return null;
-        //}
-        //if (sand)
-        //{
-        //    gameObject.SetActive(false);
-        //    BoxControll.Instance.AddSand();
-        //    sand = false;
-        //}
     }
-   
+    public IEnumerator MoveSand(float time, Transform trgt)
+    {
+        transform.parent = trgt;
+        transform.rotation = trgt.rotation;
+
+        Vector3 startPosition = transform.localPosition;
+        Vector3 targetPosition = new Vector3(0, 0, 0);
+
+        float startTime = Time.realtimeSinceStartup;
+        float fraction = 0f;
+        while (fraction < 1f)
+        {
+            fraction = Mathf.Clamp01((Time.realtimeSinceStartup - startTime) / time);
+            transform.localPosition = Vector3.Lerp(startPosition, targetPosition, fraction);
+            yield return null;
+        }
+        if (sand)
+        {
+            gameObject.SetActive(false);
+            BoxControll.Instance.AddSand();
+            sand = false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "AddScrap")
