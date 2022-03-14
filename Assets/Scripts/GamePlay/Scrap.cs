@@ -25,24 +25,49 @@ public class Scrap : MonoBehaviour
     }
     void Update()
     {
-        if(damageOn)
+        if (damageOn)
         {
             life -= getDamage;
             if (life <= 0)
             {
                 BoxControll.Instance.SpawnFlyScrap(this);
-                gameObject.SetActive(false);
+                OffTrigger();                
             }
-        }             
+        }
     }
     public void Damage(float id, bool bl)
     {
-        if(bl)
+        if (bl)
         {
             Vector3 vect = transform.position - player.position;
             GetComponent<Rigidbody>().AddForce(new Vector3(vect.x, vect.y + forceUp, vect.z) * force, ForceMode.Impulse);
         }
         damageOn = bl;
         getDamage = id;
-    }    
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Drop")
+        {
+            other.GetComponent<Build>().CleareOff();
+        }
+        if (other.gameObject.tag == "DropSand")
+        {
+            other.GetComponent<BuildLand>().CleareOff();
+        }
+    }
+    void OffTrigger()
+    {
+        List<GameObject> list = new List<GameObject>(GameObject.FindGameObjectsWithTag("Drop"));
+        for (int i = 0; i < list.Count; i++)
+        {
+            list[i].GetComponent<Build>().CleareOff();
+        }
+        List<GameObject> list2 = new List<GameObject>(GameObject.FindGameObjectsWithTag("DropSand"));
+        for (int i = 0; i < list2.Count; i++)
+        {
+            list2[i].GetComponent<BuildLand>().CleareOff();
+        }
+        gameObject.SetActive(false);
+    }
 }

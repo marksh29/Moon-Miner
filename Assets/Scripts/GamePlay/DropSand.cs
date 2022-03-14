@@ -5,6 +5,10 @@ using UnityEngine;
 public class DropSand : MonoBehaviour
 {
     // Start is called before the first frame update
+    private void OnEnable()
+    {
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+    }
     void Start()
     {
         

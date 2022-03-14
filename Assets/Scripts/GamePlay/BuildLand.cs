@@ -5,14 +5,16 @@ using TMPro;
 
 public class BuildLand : MonoBehaviour
 {
-    public bool ready;
+    public bool ready, cleareArea;
     [SerializeField] TextMeshPro txt;
-    [SerializeField] GameObject readyBuild;
+    [SerializeField] GameObject readyBuild, workBuild;
     [SerializeField] GameObject levels;
 
     [SerializeField] int count;
     public int buildCount;
     Transform block;
+
+    public List<Collider> colliders = new List<Collider>();
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class BuildLand : MonoBehaviour
             FinalBuild();
         }
         buildCount = levels.transform.childCount;
+        CleareOff();
     }
     void Update()
     {
@@ -52,5 +55,31 @@ public class BuildLand : MonoBehaviour
         levels.SetActive(false);
         readyBuild.SetActive(true);
         txt.transform.parent.gameObject.SetActive(false);
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (!colliders.Contains(other) && other.gameObject.tag == "Box")
+        {
+            colliders.Add(other);
+            if (colliders.Count > 0)
+            {
+                workBuild.SetActive(false);
+                cleareArea = false;
+            }
+        }
+    }
+    public void CleareOff()
+    {       
+        colliders.Clear();
+        StartCoroutine(Off());
+    }
+    IEnumerator Off()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (colliders.Count == 0)
+        {
+            workBuild.SetActive(true);
+            cleareArea = true;
+        }
     }
 }

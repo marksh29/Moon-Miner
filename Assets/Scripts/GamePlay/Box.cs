@@ -108,6 +108,6 @@ public class Box : MonoBehaviour
         {
             gameObject.SetActive(false);
             other.gameObject.transform.parent.parent.GetComponent<Factoria>().AddScrap();
-        }
-    }
+        }        
+    }  
 }

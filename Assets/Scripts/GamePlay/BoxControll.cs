@@ -48,12 +48,12 @@ public class BoxControll : MonoBehaviour
        
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.tag == "Drop" && !coll.gameObject.GetComponent<Build>().ready)
+        if (coll.gameObject.tag == "Drop" && !coll.gameObject.GetComponent<Build>().ready && coll.GetComponent<Build>().cleareArea)
         {
             drop_on = true;
             lastRoutine = StartCoroutine(DropBox(coll.gameObject.GetComponent<Build>()));
         }
-        if (coll.gameObject.tag == "DropSand" && sandCount > 0)
+        if (coll.gameObject.tag == "DropSand" && sandCount > 0 && coll.GetComponent<BuildLand>().cleareArea)
         {
             drop_sand = true;
             sandCouroutine = StartCoroutine(DropSand(coll.gameObject.GetComponent<BuildLand>()));
