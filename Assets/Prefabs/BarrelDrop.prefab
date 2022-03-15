@@ -164,7 +164,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.02, z: 0.3}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1219577367583699822
 MonoBehaviour:
@@ -179,10 +179,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrapLand: 0
-  force: 2
-  spawnTime: 0.2
-  jumpTime: 1
-  jumpForce: 2
+  force: 1.8
+  spawnTime: 0.1
+  jumpTime: 0.1
+  jumpForce: 2.5
 --- !u!1001 &1219577365557095397
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2282,11 +2282,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fish: 1
   scrapCount: 0
-  scale: 0.1
-  count_x: 10
+  scale: 0.6
+  count_x: 4
   count_y: 30
-  count_z: 5
-  dropSpeed: 0.1
+  count_z: 1
+  dropSpeed: 100
   curBox: 0
   maxBox: 0
   boxPos: []
@@ -33072,8 +33072,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996203644}
-  m_LocalRotation: {x: -0, y: -0.80727094, z: -0, w: 0.59018105}
-  m_LocalPosition: {x: -34.48, y: -0.51, z: -19.53}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.8, y: -0.51, z: 20.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 432861938}
@@ -42069,13 +42069,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294619169}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.912, y: 0, z: 0.104}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -0.91, y: 0, z: 0.67}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 7644791227326897272}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!65 &1294619171
 BoxCollider:
   m_ObjectHideFlags: 0
