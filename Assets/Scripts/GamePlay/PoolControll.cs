@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PoolControll : MonoBehaviour
 {
     public static PoolControll Instance;
-    [SerializeField] private GameObject box, fly_box, sand, drop_sand, barrelDrop;//, en_bullet, boss_bullet, nerf_bullet;
-    [SerializeField] private List<GameObject> box_stack, fly_box_stack, sand_stack, drop_sand_stack, barrelDrop_stack;//, enemy_stack, boss_stack, nerf_stack;
+    [SerializeField] private GameObject box, fly_box, sand, drop_sand, barrelDrop, fish;//, en_bullet, boss_bullet, nerf_bullet;
+    [SerializeField] private List<GameObject> box_stack, fly_box_stack, sand_stack, drop_sand_stack, barrelDrop_stack, fish_stack;//, enemy_stack, boss_stack, nerf_stack;
     GameObject new_obj, obj;
 
     private void Start()
@@ -37,6 +37,9 @@ public class PoolControll : MonoBehaviour
                 break;
             case ("BarrelDrop"):
                 new_obj = Spawn(barrelDrop_stack, barrelDrop);
+                break;
+            case ("Fish"):
+                new_obj = Spawn(fish_stack, fish);
                 break;
         }
         return new_obj;       
@@ -69,21 +72,25 @@ public class PoolControll : MonoBehaviour
         {
             box_stack[i].SetActive(false);
         }
-        for (int i = 0; i < box_stack.Count; i++)
+        for (int i = 0; i < fly_box_stack.Count; i++)
         {
             fly_box_stack[i].SetActive(false);
         }
-        for (int i = 0; i < box_stack.Count; i++)
+        for (int i = 0; i < drop_sand_stack.Count; i++)
         {
             drop_sand_stack[i].SetActive(false);
         }
-        for (int i = 0; i < box_stack.Count; i++)
+        for (int i = 0; i < sand_stack.Count; i++)
         {
             sand_stack[i].SetActive(false);
         }
-        for (int i = 0; i < box_stack.Count; i++)
+        for (int i = 0; i < barrelDrop_stack.Count; i++)
         {
             barrelDrop_stack[i].SetActive(false);
+        }
+        for (int i = 0; i < fish_stack.Count; i++)
+        {
+            fish_stack[i].SetActive(false);
         }
     }
 }

@@ -18,6 +18,7 @@ TagManager:
   - DropSand
   - DropZone
   - Ground
+  - DropFish
   layers:
   - Default
   - TransparentFX

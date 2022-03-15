@@ -12,7 +12,7 @@ public class Build : MonoBehaviour
     [SerializeField] int count;
     public int buildCount;
     Transform block;
-
+    bool buildOn;
     public List<Collider> colliders = new List<Collider>(); 
 
     void Start()
@@ -52,6 +52,7 @@ public class Build : MonoBehaviour
 
     void FinalBuild()
     {
+        buildOn = true;
         workBuild.SetActive(false);
         levels.SetActive(false);
         dropSandObj.SetActive(true);
@@ -82,7 +83,7 @@ public class Build : MonoBehaviour
     IEnumerator Off()
     {
         yield return new WaitForSeconds(0.5f);
-        if (colliders.Count == 0)
+        if (colliders.Count == 0 && !buildOn)
         {
             workBuild.SetActive(true);
             cleareArea = true;

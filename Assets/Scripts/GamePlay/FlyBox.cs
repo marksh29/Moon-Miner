@@ -19,6 +19,6 @@ public class FlyBox : MonoBehaviour
     public void AddBox()
     {
         gameObject.SetActive(false);
-        BoxControll.Instance.AddBox(GetComponent<MeshRenderer>().sharedMaterial);
+        BoxControll.Instance.AddBox();
     }
 }

@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upPos: {x: 0, y: 0, z: 0}
   sand: 0
-  speed: 10
+  speed: 30
   arcHeight: 2
 --- !u!1001 &3304978968090786214
 PrefabInstance:

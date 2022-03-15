@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Factoria : MonoBehaviour
 {
+    [SerializeField] bool fish;
     [SerializeField] int scrapCount;
     [Header("---------------Bag---------------")]// --- Bag -- //
     [SerializeField] float scale;
@@ -17,7 +18,7 @@ public class Factoria : MonoBehaviour
     public Transform startBox, dropScrapPos;
     bool drop_on, drop_sand;
 
-    Coroutine sandCoroutine;
+    Coroutine sandCoroutine, fishCouroutine;
 
     [Header("---------------Animation---------------")]
     [SerializeField] Animator anim;
@@ -69,6 +70,7 @@ public class Factoria : MonoBehaviour
         scrapCount--;
         GameObject obj = PoolControll.Instance.Spawn("DropSand");
         obj.transform.position = spawnPos.position;
+        obj.GetComponent<DropSand>().SetState(fish ? "fish" : "sand");
         if (scrapCount <= 0)
             Animation(false);
     }
@@ -76,6 +78,7 @@ public class Factoria : MonoBehaviour
     {
         GameObject obj = PoolControll.Instance.Spawn("Sand");
         boxObj.Add(obj);
+        obj.GetComponent<Box>().SetState(fish ? "fish" : "sand");
         obj.transform.position = boxPos[curBox].position;
         obj.transform.parent = boxPos[curBox];
         obj.transform.rotation = boxPos[curBox].rotation;
@@ -92,7 +95,7 @@ public class Factoria : MonoBehaviour
     {
         if(id)
         {
-           sandCoroutine = StartCoroutine(SandCouroutine());
+            sandCoroutine = StartCoroutine(SandCouroutine());
         }
         else
         {
@@ -104,8 +107,10 @@ public class Factoria : MonoBehaviour
     {
         while (boxObj.Count > 0)
         {
-            boxObj[boxObj.Count - 1].GetComponent<Box>().sand = true;
-            //StartCoroutine(boxObj[boxObj.Count - 1].GetComponent<Box>().DoMove(0.2f, BoxControll.Instance.SandPos()));
+            if(!fish)
+                boxObj[boxObj.Count - 1].GetComponent<Box>().sand = true;
+            else
+                boxObj[boxObj.Count - 1].GetComponent<Box>().fish = true;
             StartCoroutine(boxObj[boxObj.Count - 1].GetComponent<Box>().MoveSand(0.2f, BoxControll.Instance.SandPos()));
             boxObj.Remove(boxObj[boxObj.Count - 1]);
             curBox = boxObj.Count;

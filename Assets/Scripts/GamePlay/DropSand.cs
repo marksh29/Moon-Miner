@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DropSand : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+
     private void OnEnable()
     {
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
@@ -13,12 +14,14 @@ public class DropSand : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SetState(string name)
     {
-        
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(transform.GetChild(i).gameObject.name == name ? true : false);
+        }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "AddSand")

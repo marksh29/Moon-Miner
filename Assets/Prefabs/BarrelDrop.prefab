@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 1219577367583699822}
   m_Layer: 11
   m_Name: BarrelDrop
-  m_TagString: Box
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,8 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e36d63940bcca469729f4a74d3a4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrapLand: 0
   force: 2
-  spawnTime: 1
+  spawnTime: 0.2
   jumpTime: 1
   jumpForce: 2
 --- !u!1001 &1219577365557095397

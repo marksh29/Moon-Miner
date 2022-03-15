@@ -15,6 +15,7 @@ public class BuildLand : MonoBehaviour
     Transform block;
 
     public List<Collider> colliders = new List<Collider>();
+    bool buildOn;
 
     void Start()
     {
@@ -28,11 +29,13 @@ public class BuildLand : MonoBehaviour
     }
     void Update()
     {
-
+        
     }
     public void BuildCount()
     {
         buildCount--;
+
+     
     }
     public Transform NextBlock()
     {
@@ -52,6 +55,8 @@ public class BuildLand : MonoBehaviour
 
     void FinalBuild()
     {
+        buildOn = true;
+        workBuild.SetActive(false);
         levels.SetActive(false);
         readyBuild.SetActive(true);
         txt.transform.parent.gameObject.SetActive(false);
@@ -76,7 +81,7 @@ public class BuildLand : MonoBehaviour
     IEnumerator Off()
     {
         yield return new WaitForSeconds(0.5f);
-        if (colliders.Count == 0)
+        if (colliders.Count == 0 && !buildOn)
         {
             workBuild.SetActive(true);
             cleareArea = true;
