@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.05
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.75686276, g: 0.80784315, b: 0.90588236, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0.5
-  m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 0ffaa0b7117ba8c47a9d05ae701d4b4d, type: 2}
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.41960785, g: 0.47843137, b: 0.627451, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_Sun: {fileID: 3220092008863133284}
+  m_IndirectSpecularColor: {r: 0.17412752, g: 0.21774766, b: 0.29994395, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 1f130bec9fcfcc347b7c1ddf7e2a67b5, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 477cc4148fad3449482a3bc3178594e2, type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2069,7 +2069,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fde51952844faff40a9fdcacd6edefba, type: 3}
-  m_Color: {r: 1, g: 0.9715139, b: 0.1745283, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2225,7 +2225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc55c3b2d23f1d34b84c1a9868a2f039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ready: 1
+  ready: 0
   cleareArea: 0
   txt: {fileID: 914784135}
   workBuild: {fileID: 1773392229}
@@ -2282,8 +2282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fish: 1
   scrapCount: 0
-  scale: 0.6
-  count_x: 4
+  scale: 0.4
+  count_x: 5
   count_y: 30
   count_z: 1
   dropSpeed: 100
@@ -8076,8 +8076,8 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 50
-    NearClipPlane: 0.4
-    FarClipPlane: 2500
+    NearClipPlane: 0.45
+    FarClipPlane: 3000
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
@@ -8096,7 +8096,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269167176}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -20.77, y: 13.344267, z: -7.944268}
+  m_LocalPosition: {x: -20.77, y: 13.132135, z: -7.7321367}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1920291834}
@@ -12463,7 +12463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barCtrl: {fileID: 3710663873287032188}
   fishCtrl: {fileID: 403056000}
-  scrapLand: 0
+  scrapLand: 1
   scale: 0.1
   count_x: 5
   count_y: 20
@@ -30840,7 +30840,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914784132}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.269}
+  m_LocalPosition: {x: 0, y: 0, z: 0.259}
   m_LocalScale: {x: 0.25, y: 0.33333334, z: 10}
   m_Children: []
   m_Father: {fileID: 1966759951}
@@ -30848,7 +30848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.068, y: -0}
+  m_AnchoredPosition: {x: -0.074, y: -0}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &914784134
@@ -30912,7 +30912,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ARTEM LOH
+  m_text: DROP BARREL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92e25a85810b32b41b4aa28c8406cc9c, type: 2}
   m_sharedMaterial: {fileID: -2389445428250398982, guid: 92e25a85810b32b41b4aa28c8406cc9c, type: 2}
@@ -30939,7 +30939,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7.55
+  m_fontSize: 7.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -30975,7 +30975,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 8.557854, y: 2.1107645, z: 8.53881, w: 2.1256871}
+  m_margin: {x: 8.557854, y: 2.1107645, z: 7.9143524, w: 2.1256871}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -31763,7 +31763,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944004823}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -49377,7 +49377,7 @@ GameObject:
   - component: {fileID: 1561967347}
   - component: {fileID: 1561967346}
   m_Layer: 9
-  m_Name: Ground
+  m_Name: Water
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61773,7 +61773,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 20.3
+  m_CameraDistance: 20
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -69569,8 +69569,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.8722569, g: 1, b: 0.21226418, a: 1}
-  outlineWidth: 5
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -73692,7 +73692,7 @@ GameObject:
   - component: {fileID: 3220092008863133291}
   - component: {fileID: 3220092008863133284}
   m_Layer: 0
-  m_Name: Directional Light (1)
+  m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73706,7 +73706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3220092008863133285}
   m_LocalRotation: {x: 0.58801836, y: -0.20533493, z: 0.157559, w: 0.7663205}
-  m_LocalPosition: {x: -5.1808224, y: 4.735622, z: -2.859251}
+  m_LocalPosition: {x: 0, y: 4.65, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74351,15 +74351,15 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 32.96973
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.4
-  far clip plane: 2500
+  near clip plane: 0.45
+  far clip plane: 3000
   field of view: 40
   orthographic: 0
   orthographic size: 50
@@ -74386,7 +74386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3773659483201371059}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 348.23, y: -121.00601, z: -39.13613}
+  m_LocalPosition: {x: 348.23, y: -121.21815, z: -38.924}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 56390253}
