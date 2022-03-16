@@ -12,29 +12,14 @@ public class Controll : MonoBehaviour
     public string _state;
     [SerializeField] GameObject[] panels;
 
-    [SerializeField] int money;
-    //[SerializeField] Text scrapText, sandText;
-
-    //--- Upgarde---//
-
-    [SerializeField] int[] cena, curUpdate, maxUpdate;
-    [SerializeField] Image[] updateImage;
-    [SerializeField] TextMeshProUGUI[] cenaText;
-
-    public static event Action _upgrade;
-
-
     private void Awake()
     {
-        //PlayerPrefs.DeleteAll();
+        print(SceneManager.sceneCount);
         if (Instance == null) Instance = this;
     }
     void Start()
     {
-        money = PlayerPrefs.GetInt("money", 5000);
         Set_state("Menu");
-        MoneyText();
-        ChangeText();
     }
   
     public void Set_state(string name)
@@ -48,7 +33,7 @@ public class Controll : MonoBehaviour
         switch(_state)
         {          
             case ("Win"):
-                
+                Next_level();
                 break;
             case ("Lose"):
 
@@ -62,7 +47,14 @@ public class Controll : MonoBehaviour
     }
     public void Next_level()
     {
-        SceneManager.LoadScene(Application.loadedLevel);
+        if(Application.loadedLevel == SceneManager.sceneCount)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(Application.loadedLevel + 1);
+        }
     }
     public void Restart()
     {
@@ -78,43 +70,5 @@ public class Controll : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Set_state("Lose");
-    }
-       
-    public void ChangeMoney(int id)
-    {
-        money += id;
-        MoneyText();
-    }
-    void MoneyText()
-    {
-        //moneyText.text = money.ToString();
-        PlayerPrefs.SetInt("money", money);
     }  
-
-    public void UpgradeOn(bool on)
-    {
-        if(panels[4].activeSelf != on)
-            panels[4].SetActive(on);
-    }
-
-    public void Buy(int id)
-    {
-        if(money >= cena[id] + (cena[id] * curUpdate[id]) && curUpdate[id] < maxUpdate[id])
-        {
-            PlayerPrefs.SetInt("upgrade" + id, (curUpdate[id] + 1));
-            ChangeMoney(-(cena[id] + (cena[id] * curUpdate[id])));
-            ChangeText();
-
-            _upgrade.Invoke();
-        }
-    }
-    void ChangeText()
-    {
-        for (int i = 0; i < maxUpdate.Length; i++)
-        {
-            curUpdate[i] = PlayerPrefs.GetInt("upgrade" + i);
-            updateImage[i].fillAmount = (float)curUpdate[i] / (float)maxUpdate[i];
-            cenaText[i].text = (cena[i] + (cena[i] * curUpdate[i])).ToString();
-        }
-    }    
 }

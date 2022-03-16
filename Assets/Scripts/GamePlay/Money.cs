@@ -36,7 +36,7 @@ public class Money : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition, _target.position, fraction);
             yield return null;
         }
-        Controll.Instance.ChangeMoney(_addMoney);
+        //Controll.Instance.ChangeMoney(_addMoney);
         Destroy(gameObject);
     }
 }
