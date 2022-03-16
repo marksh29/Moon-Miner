@@ -79,7 +79,7 @@ public class Factoria : MonoBehaviour
     {
         GameObject obj = PoolControll.Instance.Spawn("Sand");
         boxObj.Add(obj);
-        obj.GetComponent<Box>().SetState(fish ? "fish" : "sand");
+        obj.GetComponent<Box>().SetState(fish ? "fish" : "sand", true);
         obj.transform.position = boxPos[curBox].position;
         obj.transform.parent = boxPos[curBox];
         obj.transform.rotation = boxPos[curBox].rotation;

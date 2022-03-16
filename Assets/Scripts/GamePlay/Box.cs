@@ -5,7 +5,7 @@ using UnityEngine;
 public class Box : MonoBehaviour
 {
     public Vector3 upPos;
-    public bool sand, scrapLand, fish, buildFish;
+    public bool sand, scrapLand, fish, buildFish, buildSand;
     bool move;
     [Header("---------New Move----------")]
     public float speed;
@@ -19,22 +19,23 @@ public class Box : MonoBehaviour
     public BuildLand land;
     private void OnEnable()
     {      
-        move = false;
-        int id = Random.Range(1, transform.childCount);
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(i == id ? true : false);
-        }
+        move = false;        
     }
     void Start()
     {
         
     }
-    public void SetState(string name)
+    public void SetState(string name, bool outline)
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).gameObject.SetActive(transform.GetChild(i).gameObject.name == name ? true : false);
+            if(transform.GetChild(i).gameObject.name == name)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+                transform.GetChild(i).gameObject.GetComponent<Outline>().enabled = outline;
+            }   
+            else
+                transform.GetChild(i).gameObject.SetActive(false);
         }
     }
     private void Update()
@@ -55,11 +56,17 @@ public class Box : MonoBehaviour
                     sand = false;
                     gameObject.SetActive(false);
                 }
-                if(scrapLand)
+                if (buildSand)
+                {
+                    buildSand = false;
+                    move = false;
+                    transform.parent = target;
+                    transform.rotation = transform.parent.rotation;
+                }
+                if (scrapLand)
                 {
                     scrapLand = false;                   
-                    transform.rotation = Quaternion.Euler(0, 0, 90);
-                    transform.parent = target;
+                    transform.rotation = Quaternion.Euler(0, 0, 90);                    
                 }                
                 if (buildFish)
                 {

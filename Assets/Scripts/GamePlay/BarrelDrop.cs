@@ -63,8 +63,9 @@ public class BarrelDrop : MonoBehaviour
         transform.localScale -= new Vector3(removeScale, removeScale, removeScale);
         if(!scrapLand)
         {
-            GameObject obj = PoolControll.Instance.Spawn("Box");
+            GameObject obj = PoolControll.Instance.Spawn("Box");          
             obj.transform.position = transform.position;
+            obj.GetComponent<Box>().SetState("barrel", false);
             StartCoroutine(obj.GetComponent<Box>().DoMove(0.3f, target.GetComponent<Factoria>().dropScrapPos));
         }
         else
@@ -73,6 +74,7 @@ public class BarrelDrop : MonoBehaviour
             {
                 GameObject obj = PoolControll.Instance.Spawn("Box");
                 obj.transform.position = transform.position;
+                obj.GetComponent<Box>().SetState("barrel", false);
                 StartCoroutine(obj.GetComponent<Box>().DoMove(0.3f, target.GetComponent<Factoria>().dropScrapPos));
             }
             else
@@ -81,6 +83,7 @@ public class BarrelDrop : MonoBehaviour
                 {
                     GameObject obj = PoolControll.Instance.Spawn("Box");
                     obj.transform.position = transform.position;
+                    obj.GetComponent<Box>().SetState("barrel", false);
                     target.gameObject.GetComponent<BuildLand>().BuildCount();
                     obj.GetComponent<Box>().scrapLand = scrapLand;
                     StartCoroutine(obj.GetComponent<Box>().DoMove(0.3f, target.gameObject.GetComponent<BuildLand>().NextBlock()));

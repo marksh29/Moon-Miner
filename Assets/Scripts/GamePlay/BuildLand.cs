@@ -56,7 +56,7 @@ public class BuildLand : MonoBehaviour
     void FinalBuild()
     {
         Controll.Instance.AddWin();
-
+        GetComponent<BoxCollider>().enabled = false;
         buildOn = true;
         workBuild.SetActive(false);
         levels.SetActive(false);

@@ -74,7 +74,7 @@ public class BoxControll : MonoBehaviour
             }           
             coll.gameObject.transform.parent.gameObject.GetComponent<Factoria>().GetSand(true);
         }      
-        if (coll.gameObject.tag == "Box")// && curBox < maxBox)
+        if (coll.gameObject.tag == "Box")
         {
             coll.gameObject.GetComponent<Scrap>().Damage(damage, true);
         }
@@ -105,7 +105,7 @@ public class BoxControll : MonoBehaviour
                 StopCoroutine(scarpCouroutine);
             coll.gameObject.transform.parent.gameObject.GetComponent<Factoria>().GetSand(false);
         }       
-        if (coll.gameObject.tag == "Box")// && curBox < maxBox)
+        if (coll.gameObject.tag == "Box")
         {
             coll.gameObject.GetComponent<Scrap>().Damage(damage, false);
         }
@@ -126,7 +126,8 @@ public class BoxControll : MonoBehaviour
             {
                 Transform box = _build.NextBlock();
                 GameObject scrap = PoolControll.Instance.Spawn("Box");
-                scrap.transform.position = startBox.transform.parent.position;               
+                scrap.GetComponent<Box>().SetState("barrel", false);
+                scrap.transform.position = startBox.transform.parent.position;                  
                 StartCoroutine(scrap.GetComponent<Box>().DoMove(0.3f, box));
                 _build.BuildCount();
                 scrapCount--;
@@ -145,6 +146,7 @@ public class BoxControll : MonoBehaviour
             if (_build.buildCount > 0)
             {
                 GameObject sand = PoolControll.Instance.Spawn("Sand");
+                sand.GetComponent<Box>().buildSand = true;
                 sand.transform.position = startBox.transform.parent.position;              
                 StartCoroutine(sand.GetComponent<Box>().DoMove(0.3f, _build.NextBlock()));
                 sandCount--;
@@ -163,7 +165,7 @@ public class BoxControll : MonoBehaviour
             if (_target.fishCount > 0)
             {
                 GameObject sand = PoolControll.Instance.Spawn("Sand");
-                sand.GetComponent<Box>().SetState("fish");
+                sand.GetComponent<Box>().SetState("fish", false);
                 sand.GetComponent<Box>().buildFish = true;
                 sand.transform.position = startBox.transform.parent.position;
                 StartCoroutine(sand.GetComponent<Box>().DoMove(0.3f, _target.transform));
