@@ -19,7 +19,8 @@ public class Scrap : MonoBehaviour
     }
     void Start()
     {
-        id = Random.Range(0, transform.childCount);
+        id = Random.Range(1, 1); //только чёрные бочки
+        //id = Random.Range(0, transform.childCount); //и зелёные и чёрные бочки
         transform.GetChild(id).gameObject.SetActive(true);
         mat = allMats[id < allMats.Length ? id : 0];
     }

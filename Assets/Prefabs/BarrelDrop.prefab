@@ -103,7 +103,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 3
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: ed835919bbbecdb4485341c729a6dbca, type: 2}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e36d63940bcca469729f4a74d3a4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrapLand: 0
+  scrapLand: 1
   force: 1.8
   spawnTime: 0.1
   jumpTime: 0.1

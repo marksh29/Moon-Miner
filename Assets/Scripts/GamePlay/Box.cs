@@ -20,7 +20,8 @@ public class Box : MonoBehaviour
     private void OnEnable()
     {      
         move = false;
-        int id = Random.Range(0, transform.childCount);
+        int id = Random.Range(1, 1); //только чёрные бочки
+        //int id = Random.Range(0, transform.childCount); //и зелёные и чёрные бочки
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(i == id ? true : false);
