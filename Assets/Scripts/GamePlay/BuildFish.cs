@@ -26,6 +26,11 @@ public class BuildFish : MonoBehaviour
    
     public void SpawnFish()
     {
+        count--;
+        if(count == 0)
+        {
+            Controll.Instance.AddWin();
+        }
         GameObject fish = PoolControll.Instance.Spawn("Fish");
         fish.transform.parent = fishParent[0].transform.parent;      
         fish.GetComponent<FishControll>().StartMove(fishParent);

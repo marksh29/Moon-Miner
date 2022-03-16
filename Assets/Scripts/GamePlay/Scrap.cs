@@ -68,6 +68,11 @@ public class Scrap : MonoBehaviour
         {
             list2[i].GetComponent<BuildLand>().CleareOff();
         }
+        List<GameObject> list3 = new List<GameObject>(GameObject.FindGameObjectsWithTag("DropFish"));
+        for (int i = 0; i < list3.Count; i++)
+        {
+            list3[i].GetComponent<BuildFish>().CleareOff();
+        }
         gameObject.SetActive(false);
     }
 }

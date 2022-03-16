@@ -55,6 +55,8 @@ public class BuildLand : MonoBehaviour
 
     void FinalBuild()
     {
+        Controll.Instance.AddWin();
+
         buildOn = true;
         workBuild.SetActive(false);
         levels.SetActive(false);

@@ -167,9 +167,9 @@ public class BoxControll : MonoBehaviour
                 sand.GetComponent<Box>().buildFish = true;
                 sand.transform.position = startBox.transform.parent.position;
                 StartCoroutine(sand.GetComponent<Box>().DoMove(0.3f, _target.transform));
-                fishCount--;
-                fishCtrl.SetScale(fishCount);
+                fishCount--;                
                 _target.RemoveFishCount();
+                fishCtrl.SetScale(fishCount);
                 Txt();
                 yield return new WaitForSeconds(dropSpeed);
             }

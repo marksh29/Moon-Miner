@@ -11,15 +11,18 @@ public class Controll : MonoBehaviour
     public static Controll Instance;
     public string _state;
     [SerializeField] GameObject[] panels;
-
+    [SerializeField] int winCount;
     private void Awake()
     {
-        print(SceneManager.sceneCount);
         if (Instance == null) Instance = this;
     }
     void Start()
     {
         Set_state("Menu");
+
+        List<GameObject> list_1 = new List<GameObject>(GameObject.FindGameObjectsWithTag("DropSand"));
+        List<GameObject> list_2 = new List<GameObject>(GameObject.FindGameObjectsWithTag("DropFish"));
+        winCount = list_1.Count + list_2.Count;
     }
   
     public void Set_state(string name)
@@ -28,18 +31,26 @@ public class Controll : MonoBehaviour
         for (int i = 0; i < panels.Length; i++)
         {
             panels[i].SetActive(panels[i].name == name ? true : false);
-        }  
+        } 
         
         switch(_state)
         {          
             case ("Win"):
-                Next_level();
+                
                 break;
             case ("Lose"):
 
                 break;
         }
-    }  
+    } 
+    
+    public void AddWin()
+    {
+        winCount--;
+        if (winCount == 0)
+            StartCoroutine(Win());
+    }
+
 
     public void StartLevel()
     {
@@ -47,7 +58,7 @@ public class Controll : MonoBehaviour
     }
     public void Next_level()
     {
-        if(Application.loadedLevel == SceneManager.sceneCount)
+        if(Application.loadedLevel == SceneManager.sceneCount - 1)
         {
             SceneManager.LoadScene(0);
         }
