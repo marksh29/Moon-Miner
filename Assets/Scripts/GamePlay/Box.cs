@@ -20,10 +20,6 @@ public class Box : MonoBehaviour
     private void OnEnable()
     {      
         move = false;
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.SetActive(false);
-        }
     }
     void Start()
     {
