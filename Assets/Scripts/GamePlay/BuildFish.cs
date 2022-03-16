@@ -12,6 +12,7 @@ public class BuildFish : MonoBehaviour
     public bool cleareArea;
     public List<Collider> colliders = new List<Collider>();
     [SerializeField] Transform[] fishParent;
+    [SerializeField] GameObject effect;
     bool buildOn;
 
     void Start()
@@ -30,6 +31,7 @@ public class BuildFish : MonoBehaviour
         if(count == 0)
         {
             Controll.Instance.AddWin();
+            effect.SetActive(true);
         }
         GameObject fish = PoolControll.Instance.Spawn("Fish");
         fish.transform.parent = fishParent[0].transform.parent;      

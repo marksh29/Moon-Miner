@@ -6,10 +6,10 @@ public class BarrelDrop : MonoBehaviour
 {
     public bool scrapLand;
     [SerializeField] Transform target;
-    int count;
+    [SerializeField] int count;
     [SerializeField] float force, spawnTime, jumpTime, jumpForce;
-    float removeScale; 
-    bool fly, jump;
+    float removeScale;
+    [SerializeField] bool fly, jump;
     float jumpTm;
 
     private void OnEnable()
@@ -18,7 +18,7 @@ public class BarrelDrop : MonoBehaviour
         fly = true;
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-       StartCoroutine(FlyOff());
+        StartCoroutine(FlyOff());
     }
     void Start()
     {
@@ -31,6 +31,7 @@ public class BarrelDrop : MonoBehaviour
             jumpTm -= Time.deltaTime;
             if (jumpTm <= 0)
             {
+                jump = false;
                 jumpTm = jumpTime;
                 GetComponent<Rigidbody>().isKinematic = false;
                 GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -98,18 +99,19 @@ public class BarrelDrop : MonoBehaviour
         {
             if(!fly)
             {
-                if (!jump)
-                {
-                    StartCoroutine(StartSpawnBarrel());
-                    jump = true;
-                }
-                GetComponent<Rigidbody>().isKinematic = true;
-            }                    
+                StartCoroutine(StartSpawnBarrel());
+                fly = true;
+            }
+            if(!jump)
+            {
+                jump = true;                
+            }
+            GetComponent<Rigidbody>().isKinematic = true;
         }
     }
     IEnumerator FlyOff()
     {
-        yield return new WaitForSeconds(0.3f);  
+        yield return new WaitForSeconds(1f);  
         fly = false;
     }
 }

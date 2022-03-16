@@ -164,7 +164,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.2, y: 0.1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1219577367583699822
 MonoBehaviour:
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73e36d63940bcca469729f4a74d3a4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrapLand: 1
+  scrapLand: 0
   target: {fileID: 0}
   force: 1.8
   spawnTime: 0.1
