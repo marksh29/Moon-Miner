@@ -12,6 +12,7 @@ public class Factoria : MonoBehaviour
     [SerializeField] float yy;
     [SerializeField] int count_x, count_y, count_z;
     [Header("---------------Game---------------")]
+    [SerializeField] int addForBarrel;
     [SerializeField] float dropTime;
     [SerializeField] int curBox, maxBox;
     [SerializeField] List<Transform> boxPos;
@@ -63,7 +64,7 @@ public class Factoria : MonoBehaviour
     }
     public void AddScrap()
     {
-        scrapCount++;
+        scrapCount += addForBarrel;
         Animation(true);
     }
     public void SpawnSand()
