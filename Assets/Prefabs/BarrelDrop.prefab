@@ -181,7 +181,7 @@ MonoBehaviour:
   scrapLand: 0
   force: 1.8
   spawnTime: 0.1
-  jumpTime: 0.1
+  jumpTime: 0.2
   jumpForce: 2.5
 --- !u!1001 &1219577365557095397
 PrefabInstance:

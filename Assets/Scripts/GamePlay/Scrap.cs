@@ -19,7 +19,7 @@ public class Scrap : MonoBehaviour
     }
     void Start()
     {
-        id = Random.Range(0, transform.childCount);
+        id = Random.Range(1, transform.childCount);
         transform.GetChild(id).gameObject.SetActive(true);
         mat = allMats[id < allMats.Length ? id : 0];
     }
