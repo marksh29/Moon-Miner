@@ -32,8 +32,8 @@ Transform:
   m_LocalPosition: {x: -6.3899994, y: 0.85899997, z: 2.1599998}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
-  - {fileID: 3050939850322435661}
   - {fileID: 8583290498632271230}
+  - {fileID: 3050939850322435661}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -129,8 +129,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upPos: {x: 0, y: 0, z: 0}
   sand: 0
+  scrapLand: 0
+  fish: 0
+  buildFish: 0
   speed: 30
   arcHeight: 2
+  land: {fileID: 0}
 --- !u!1001 &3304978968090786214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,7 +144,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1a5f4d883d004894f917143b68d629c9, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a5f4d883d004894f917143b68d629c9, type: 3}
       propertyPath: m_LocalScale.x
@@ -218,7 +222,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 42fea8071038e60448ff8ac49d7a2ff4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 42fea8071038e60448ff8ac49d7a2ff4, type: 3}
       propertyPath: m_LocalScale.x
@@ -234,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 42fea8071038e60448ff8ac49d7a2ff4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 42fea8071038e60448ff8ac49d7a2ff4, type: 3}
       propertyPath: m_LocalPosition.y

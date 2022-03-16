@@ -179,10 +179,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrapLand: 1
+  target: {fileID: 0}
   force: 1.8
   spawnTime: 0.1
-  jumpTime: 0.2
-  jumpForce: 2.5
+  jumpTime: 0.5
+  jumpForce: 2
 --- !u!1001 &1219577365557095397
 PrefabInstance:
   m_ObjectHideFlags: 0

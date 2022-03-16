@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarrelDrop : MonoBehaviour
 {
     public bool scrapLand;
-    Transform target;
+    [SerializeField] Transform target;
     int count;
     [SerializeField] float force, spawnTime, jumpTime, jumpForce;
     float removeScale; 
@@ -60,28 +60,36 @@ public class BarrelDrop : MonoBehaviour
     void SpawnBarrel()
     {
         transform.localScale -= new Vector3(removeScale, removeScale, removeScale);
-        if (!scrapLand)
-        {            
+        if(!scrapLand)
+        {
             GameObject obj = PoolControll.Instance.Spawn("Box");
             obj.transform.position = transform.position;
             StartCoroutine(obj.GetComponent<Box>().DoMove(0.3f, target.GetComponent<Factoria>().dropScrapPos));
         }
-            
         else
         {
-            if (target.gameObject.GetComponent<BuildLand>().buildCount > 0)
+            if (target.gameObject.GetComponent<Build>() != null)
             {
                 GameObject obj = PoolControll.Instance.Spawn("Box");
                 obj.transform.position = transform.position;
-                target.gameObject.GetComponent<BuildLand>().BuildCount();
-                obj.GetComponent<Box>().scrapLand = scrapLand;
-                StartCoroutine(obj.GetComponent<Box>().DoMove(0.3f, target.gameObject.GetComponent<BuildLand>().NextBlock()));
+                StartCoroutine(obj.GetComponent<Box>().DoMove(0.3f, target.GetComponent<Factoria>().dropScrapPos));
             }
             else
             {
-                count = 0;
-                gameObject.SetActive(false);
-            }            
+                if (target.gameObject.GetComponent<BuildLand>().buildCount > 0)
+                {
+                    GameObject obj = PoolControll.Instance.Spawn("Box");
+                    obj.transform.position = transform.position;
+                    target.gameObject.GetComponent<BuildLand>().BuildCount();
+                    obj.GetComponent<Box>().scrapLand = scrapLand;
+                    StartCoroutine(obj.GetComponent<Box>().DoMove(0.3f, target.gameObject.GetComponent<BuildLand>().NextBlock()));
+                }
+                else
+                {
+                    count = 0;
+                    gameObject.SetActive(false);
+                }
+            }
         }           
     }
     private void OnCollisionEnter(Collision collision)

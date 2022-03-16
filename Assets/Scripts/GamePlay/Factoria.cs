@@ -9,9 +9,10 @@ public class Factoria : MonoBehaviour
     [SerializeField] int scrapCount;
     [Header("---------------Bag---------------")]// --- Bag -- //
     [SerializeField] float scale;
+    [SerializeField] float yy;
     [SerializeField] int count_x, count_y, count_z;
     [Header("---------------Game---------------")]
-    [SerializeField] float dropSpeed;
+    [SerializeField] float dropTime;
     [SerializeField] int curBox, maxBox;
     [SerializeField] List<Transform> boxPos;
     [SerializeField] List<GameObject> boxObj;
@@ -39,7 +40,7 @@ public class Factoria : MonoBehaviour
                 {
                     GameObject obj = new GameObject();
                     obj.transform.parent = startBox.transform.parent.transform;
-                    obj.transform.localPosition = new Vector3(startBox.localPosition.x + (scale * x), startBox.localPosition.y + (scale * z), startBox.localPosition.z + (scale * y));
+                    obj.transform.localPosition = new Vector3(startBox.localPosition.x + (scale * x), startBox.localPosition.y + (yy * z), startBox.localPosition.z + (scale * y));
                     obj.transform.rotation = startBox.rotation;
                     boxPos.Add(obj.transform);
                 }
@@ -114,7 +115,7 @@ public class Factoria : MonoBehaviour
             StartCoroutine(boxObj[boxObj.Count - 1].GetComponent<Box>().MoveSand(0.2f, BoxControll.Instance.SandPos()));
             boxObj.Remove(boxObj[boxObj.Count - 1]);
             curBox = boxObj.Count;
-            yield return new WaitForSeconds(dropSpeed);
+            yield return new WaitForSeconds(dropTime);
         }
     }
 }
