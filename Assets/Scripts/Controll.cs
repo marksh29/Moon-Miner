@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +12,8 @@ public class Controll : MonoBehaviour
     public string _state;
     [SerializeField] GameObject[] panels;
     [SerializeField] int winCount;
+    [SerializeField] Transform player;
+    [SerializeField] GameObject effect;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -19,7 +21,6 @@ public class Controll : MonoBehaviour
     void Start()
     {
         Set_state("Menu");
-
         List<GameObject> list_1 = new List<GameObject>(GameObject.FindGameObjectsWithTag("DropSand"));
         List<GameObject> list_2 = new List<GameObject>(GameObject.FindGameObjectsWithTag("DropFish"));
         winCount = list_1.Count + list_2.Count;
@@ -71,12 +72,24 @@ public class Controll : MonoBehaviour
     {
         SceneManager.LoadScene(Application.loadedLevel);
     }
+
     
     public IEnumerator Win()
     {
+        StartCoroutine(Effect(10, 1));
         yield return new WaitForSeconds(2);
         Set_state("Win");
     }
+    public IEnumerator Effect(int id, float time)
+    {
+        while(id > 0)
+        {
+            GameObject eff = Instantiate(effect) as GameObject;
+            eff.transform.position = new Vector3(player.position.x + Random.Range(-3, 3), player.position.y + Random.Range(1, 5), player.position.z + Random.Range(-3, 3));
+            yield return new WaitForSeconds(time);
+        }        
+    }
+
     public IEnumerator Lose()
     {
         yield return new WaitForSeconds(1);
