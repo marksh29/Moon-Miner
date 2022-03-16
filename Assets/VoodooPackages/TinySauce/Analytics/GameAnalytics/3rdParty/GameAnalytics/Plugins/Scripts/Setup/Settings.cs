@@ -53,7 +53,7 @@ namespace GameAnalyticsSDK.Setup
         /// The version of the GA Unity Wrapper plugin
         /// </summary>
         [HideInInspector]
-        public static string VERSION = "7.3.0";
+        public static string VERSION = "6.5.1";
 
         [HideInInspector]
         public static bool CheckingForUpdates = false;
@@ -183,7 +183,6 @@ namespace GameAnalyticsSDK.Setup
 
         public bool UsePlayerSettingsBuildNumber = false;
         public bool SubmitErrors = true;
-        public bool NativeErrorReporting = false;
         public int MaxErrorCount = 10;
         public bool SubmitFpsAverage = true;
         public bool SubmitFpsCritical = true;

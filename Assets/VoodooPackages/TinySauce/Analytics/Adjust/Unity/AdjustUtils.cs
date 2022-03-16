@@ -79,16 +79,6 @@ namespace com.adjust.sdk
             return (double)value;
         }
 
-        public static int ConvertInt(int? value)
-        {
-            if (value == null)
-            {
-                return -1;
-            }
-
-            return (int)value;
-        }
-
         public static long ConvertLong(long? value)
         {
             if (value == null)

@@ -53,8 +53,8 @@ namespace Voodoo.Sauce.Internal
             gaAndroidGameKey.text = TSSettings.gameAnalyticsAndroidGameKey;
             gaAndroidSecretKey.text = TSSettings.gameAnalyticsAndroidSecretKey;
 
-            fbTitle.text = "No Facebook - Adjust only";
-            fbAppID.text = "No FB SDK";
+            fbTitle.text = "Facebook - v. " + Facebook.Unity.FacebookSdkVersion.Build;
+            fbAppID.text = TSSettings.facebookAppId;
 
             adjustTitle.text = (Adjust.getSdkVersion() == null || Adjust.getSdkVersion() == "") ? "Adjust" : "Adjust - v. " + Adjust.getSdkVersion().Split("@"[0])[1]; //get Adjust version and remove useless info before the "@"
             adjustIosToken.text = TSSettings.adjustIOSToken;

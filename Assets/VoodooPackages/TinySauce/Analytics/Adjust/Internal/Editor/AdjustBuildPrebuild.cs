@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Facebook.Unity.Settings;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;

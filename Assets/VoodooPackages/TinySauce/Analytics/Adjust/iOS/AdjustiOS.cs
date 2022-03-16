@@ -8,7 +8,7 @@ namespace com.adjust.sdk
 #if UNITY_IOS
     public class AdjustiOS
     {
-        private const string sdkPrefix = "unity4.29.4";
+        private const string sdkPrefix = "unity4.28.0";
 
         [DllImport("__Internal")]
         private static extern void _AdjustLaunchApp(
@@ -42,8 +42,7 @@ namespace com.adjust.sdk
             int isEventFailureCallbackImplemented,
             int isSessionSuccessCallbackImplemented,
             int isSessionFailureCallbackImplemented,
-            int isDeferredDeeplinkCallbackImplemented,
-            int isConversionValueUpdatedCallbackImplemented);
+            int isDeferredDeeplinkCallbackImplemented);
 
         [DllImport("__Internal")]
         private static extern void _AdjustTrackEvent(
@@ -113,18 +112,6 @@ namespace com.adjust.sdk
 
         [DllImport("__Internal")]
         private static extern void _AdjustTrackAdRevenue(string source, string payload);
-
-        [DllImport("__Internal")]
-        private static extern void _AdjustTrackAdRevenueNew(
-            string source,
-            double revenue,
-            string currency,
-            int adImpressionsCount,
-            string adRevenueNetwork,
-            string adRevenueUnit,
-            string adRevenuePlacement,
-            string jsonCallbackParameters,
-            string jsonPartnerParameters);
 
         [DllImport("__Internal")]
         private static extern void _AdjustTrackAppStoreSubscription(
@@ -209,7 +196,6 @@ namespace com.adjust.sdk
             int isSessionSuccessCallbackImplemented = AdjustUtils.ConvertBool(adjustConfig.getSessionSuccessDelegate() != null);
             int isSessionFailureCallbackImplemented = AdjustUtils.ConvertBool(adjustConfig.getSessionFailureDelegate() != null);
             int isDeferredDeeplinkCallbackImplemented = AdjustUtils.ConvertBool(adjustConfig.getDeferredDeeplinkDelegate() != null);
-            int isConversionValueUpdatedCallbackImplemented = AdjustUtils.ConvertBool(adjustConfig.getConversionValueUpdatedDelegate() != null);
 
             _AdjustLaunchApp(
                 appToken,
@@ -242,8 +228,7 @@ namespace com.adjust.sdk
                 isEventFailureCallbackImplemented,
                 isSessionSuccessCallbackImplemented,
                 isSessionFailureCallbackImplemented,
-                isDeferredDeeplinkCallbackImplemented,
-                isConversionValueUpdatedCallbackImplemented);
+                isDeferredDeeplinkCallbackImplemented);
         }
 
         public static void TrackEvent(AdjustEvent adjustEvent)
@@ -320,30 +305,6 @@ namespace com.adjust.sdk
         public static void TrackAdRevenue(string source, string payload)
         {
             _AdjustTrackAdRevenue(source, payload);
-        }
-
-        public static void TrackAdRevenue(AdjustAdRevenue adRevenue)
-        {
-            string source = adRevenue.source;
-            double revenue = AdjustUtils.ConvertDouble(adRevenue.revenue);
-            string currency = adRevenue.currency;
-            int adImpressionsCount = AdjustUtils.ConvertInt(adRevenue.adImpressionsCount);
-            string adRevenueNetwork = adRevenue.adRevenueNetwork;
-            string adRevenueUnit = adRevenue.adRevenueUnit;
-            string adRevenuePlacement = adRevenue.adRevenuePlacement;
-            string stringJsonCallbackParameters = AdjustUtils.ConvertListToJson(adRevenue.callbackList);
-            string stringJsonPartnerParameters = AdjustUtils.ConvertListToJson(adRevenue.partnerList);
-
-            _AdjustTrackAdRevenueNew(
-                source,
-                revenue,
-                currency,
-                adImpressionsCount,
-                adRevenueNetwork,
-                adRevenueUnit,
-                adRevenuePlacement,
-                stringJsonCallbackParameters,
-                stringJsonPartnerParameters);
         }
 
         public static void TrackAppStoreSubscription(AdjustAppStoreSubscription subscription)

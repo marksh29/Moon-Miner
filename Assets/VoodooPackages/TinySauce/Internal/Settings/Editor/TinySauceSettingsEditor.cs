@@ -64,8 +64,12 @@ namespace Voodoo.Sauce.Internal.Editor
             Console.Clear();
             BuildErrorWindow.Clear();
             GameAnalyticsPreBuild.CheckAndUpdateGameAnalyticsSettings(sauceSettings);
+            FacebookPreBuild.CheckAndUpdateFacebookSettings(sauceSettings);
             AdjustBuildPrebuild.CheckAndUpdateAdjustSettings(sauceSettings);       
             TinySauce.UpdateAdjustToken(sauceSettings);
+           
+            
+
         }
     }
 }

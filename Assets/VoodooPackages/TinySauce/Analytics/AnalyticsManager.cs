@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Facebook.Unity;
 //using Voodoo.Sauce.Internal.Analytics;
 using UnityEngine;
 

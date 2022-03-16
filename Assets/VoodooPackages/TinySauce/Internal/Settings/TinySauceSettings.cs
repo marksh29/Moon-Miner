@@ -27,7 +27,10 @@ namespace Voodoo.Sauce.Internal
 
         [Tooltip("Your GameAnalytics Android Secret Key")]
         public string gameAnalyticsAndroidSecretKey;
-        
+        [Header("Facebook")]
+        [Tooltip("The Facebook App Id of your game")]
+        public string facebookAppId;
+
         [Header("Adjust")]
         [Tooltip("The IOS Adjust App token of your game")]
         public string adjustIOSToken;

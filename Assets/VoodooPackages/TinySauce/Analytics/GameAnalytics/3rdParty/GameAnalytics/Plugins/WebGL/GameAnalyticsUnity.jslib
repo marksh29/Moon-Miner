@@ -58,51 +58,33 @@ var GameAnalyticsUnity = {
     {
         gameanalytics.GameAnalytics.setCustomDimension03(Pointer_stringify(customDimension));
     },
-    setGlobalCustomEventFields: function(customFields)
-    {
-        gameanalytics.GameAnalytics.setGlobalCustomEventFields(JSON.parse(customFields));
-    },
     addBusinessEvent: function(currency, amount, itemType, itemId, cartType, fields)
     {
-        var fieldsString = Pointer_stringify(fields);
-        fieldsString = fieldsString ? fieldsString : "{}";
-        gameanalytics.GameAnalytics.addBusinessEvent(Pointer_stringify(currency), amount, Pointer_stringify(itemType), Pointer_stringify(itemId), Pointer_stringify(cartType), JSON.parse(fieldsString));
+        gameanalytics.GameAnalytics.addBusinessEvent(Pointer_stringify(currency), amount, Pointer_stringify(itemType), Pointer_stringify(itemId), Pointer_stringify(cartType)/*, JSON.parse(Pointer_stringify(fields))*/);
     },
     addResourceEvent: function(flowType, currency, amount, itemType, itemId, fields)
     {
-        var fieldsString = Pointer_stringify(fields);
-        fieldsString = fieldsString ? fieldsString : "{}";
-        gameanalytics.GameAnalytics.addResourceEvent(flowType, Pointer_stringify(currency), amount, Pointer_stringify(itemType), Pointer_stringify(itemId), JSON.parse(fieldsString));
+        gameanalytics.GameAnalytics.addResourceEvent(flowType, Pointer_stringify(currency), amount, Pointer_stringify(itemType), Pointer_stringify(itemId)/*, JSON.parse(Pointer_stringify(fields))*/);
     },
     addProgressionEvent: function(progressionStatus, progression01, progression02, progression03, fields)
     {
-        var fieldsString = Pointer_stringify(fields);
-        fieldsString = fieldsString ? fieldsString : "{}";
-        gameanalytics.GameAnalytics.addProgressionEvent(progressionStatus, Pointer_stringify(progression01), Pointer_stringify(progression02), Pointer_stringify(progression03), JSON.parse(fieldsString));
+        gameanalytics.GameAnalytics.addProgressionEvent(progressionStatus, Pointer_stringify(progression01), Pointer_stringify(progression02), Pointer_stringify(progression03)/*, JSON.parse(Pointer_stringify(fields))*/);
     },
     addProgressionEventWithScore: function(progressionStatus, progression01, progression02, progression03, score, fields)
     {
-        var fieldsString = Pointer_stringify(fields);
-        fieldsString = fieldsString ? fieldsString : "{}";
-        gameanalytics.GameAnalytics.addProgressionEvent(progressionStatus, Pointer_stringify(progression01), Pointer_stringify(progression02), Pointer_stringify(progression03), score, JSON.parse(fieldsString));
+        gameanalytics.GameAnalytics.addProgressionEvent(progressionStatus, Pointer_stringify(progression01), Pointer_stringify(progression02), Pointer_stringify(progression03), score/*, JSON.parse(Pointer_stringify(fields))*/);
     },
     addDesignEvent: function(eventId, fields)
     {
-        var fieldsString = Pointer_stringify(fields);
-        fieldsString = fieldsString ? fieldsString : "{}";
-        gameanalytics.GameAnalytics.addDesignEvent(Pointer_stringify(eventId), JSON.parse(fieldsString));
+        gameanalytics.GameAnalytics.addDesignEvent(Pointer_stringify(eventId)/*, JSON.parse(Pointer_stringify(fields))*/);
     },
     addDesignEventWithValue: function(eventId, value, fields)
     {
-        var fieldsString = Pointer_stringify(fields);
-        fieldsString = fieldsString ? fieldsString : "{}";
-        gameanalytics.GameAnalytics.addDesignEvent(Pointer_stringify(eventId), value, JSON.parse(fieldsString));
+        gameanalytics.GameAnalytics.addDesignEvent(Pointer_stringify(eventId), value/*, JSON.parse(Pointer_stringify(fields))*/);
     },
     addErrorEvent: function(severity, message, fields)
     {
-        var fieldsString = Pointer_stringify(fields);
-        fieldsString = fieldsString ? fieldsString : "{}";
-        gameanalytics.GameAnalytics.addErrorEvent(severity, Pointer_stringify(message), JSON.parse(fieldsString));
+        gameanalytics.GameAnalytics.addErrorEvent(severity, Pointer_stringify(message)/*, JSON.parse(Pointer_stringify(fields))*/);
     },
     setEnabledInfoLog: function(enabled)
     {

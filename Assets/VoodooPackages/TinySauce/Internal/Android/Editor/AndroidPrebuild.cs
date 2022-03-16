@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
+using Facebook.Unity.Editor;
 using System;
 
 namespace Voodoo.Sauce.Internal.Editor
@@ -84,6 +85,8 @@ namespace Voodoo.Sauce.Internal.Editor
             string destPath = Path.Combine(Application.dataPath, DestManifestPath);
             File.Delete(destPath);
             File.WriteAllText(destPath, content);
+            //Add Facebook Manifest to  application manifest
+            ManifestMod.GenerateManifest();
         }
 
         private static void UpdateLauncherManifest()

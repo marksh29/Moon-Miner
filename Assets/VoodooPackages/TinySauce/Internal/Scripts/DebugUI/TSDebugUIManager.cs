@@ -8,11 +8,15 @@ namespace Voodoo.Sauce.Internal
 
         private bool isDebugUIOpen = false;
 
+        private int nbTapTop = 2;
+        private int nbTapBottom = 2;
+
         private float maxDurationBetweenTap = 2.5f;
         private float countDown;
 
         private int countTapTL = 0;
         private int countTapTR = 0;
+        private int countTapBL = 0;
 
         private Vector3 mousePos;
         private int smallerScreenSliceNb = 6;
@@ -53,20 +57,21 @@ namespace Voodoo.Sauce.Internal
             {
                 if (countDown > 0)
                 {
-                    countDown -= Time.unscaledDeltaTime;
+                    countDown -= Time.deltaTime;
 
                     if (countDown <= 0) ResetCountsTap();
                 }
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (countTapTL < 1) TapTopLeftElseReset();
-                    else if (countTapTR < 2) TapTopRightElseReset();
-                    else if (countTapTL < 4) TapTopLeftElseReset();
-                    else if (countTapTR < 6) TapTopRightElseReset();
+                    if (countTapTL < nbTapTop) TapTopLeftElseReset();
+                    else if (countTapTR < nbTapTop) TapTopRightElseReset();
+                    else if (countTapBL < nbTapBottom) TapBottomLeftElseReset();
+                    else if (countTapTL < nbTapTop * 2) TapTopLeftElseReset();
+                    else if (countTapTR < nbTapTop * 2) TapTopRightElseReset();
                 }
 
-                if (countTapTL == 4 && countTapTR == 6)
+                if (countTapTL == (nbTapTop * 2) && countTapTR == (nbTapTop * 2) && countTapBL == nbTapBottom)
                 {
                     Instantiate(tsDebugUIPrefab);
                     ResetCountsTap();
@@ -82,10 +87,19 @@ namespace Voodoo.Sauce.Internal
             else
                 ResetCountsTap();
         }
+
         private void TapTopRightElseReset()
         {
             if (mousePos.x >= ScreenSliceWidth * (screenWidthSliceNb - 1) && mousePos.y >= ScreenSliceHeight * (screenHeightSliceNb - 1))
                 ValidTap(ref countTapTR);
+            else
+                ResetCountsTap();
+        }
+
+        private void TapBottomLeftElseReset()
+        {
+            if (mousePos.x <= ScreenSliceWidth && mousePos.y <= ScreenSliceHeight)
+                ValidTap(ref countTapBL);
             else
                 ResetCountsTap();
         }
@@ -99,10 +113,11 @@ namespace Voodoo.Sauce.Internal
 
         private void ResetCountsTap()
         {
-            //Debug.Log("RESET : TL=" + countTapTL + " // TR=" + countTapTR + " // countDown=" + countDown);
+            //Debug.Log("RESET : TL=" + countTapTL + " // TR=" + countTapTR + " // BL=" + countTapBL + " // countDown=" + countDown);
             countDown = 0;
             countTapTL = 0;
             countTapTR = 0;
+            countTapBL = 0;
         }
     }
 }

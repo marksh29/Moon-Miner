@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Voodoo.Sauce.Internal;
 
 namespace com.adjust.sdk
 {
@@ -21,7 +22,6 @@ namespace com.adjust.sdk
 
         [HideInInspector]
         public bool launchDeferredDeeplink = true;
-
         [HideInInspector]
         public string appToken = "{Your App Token}";
 
@@ -37,20 +37,19 @@ namespace com.adjust.sdk
         private static Action<AdjustSessionSuccess> sessionSuccessDelegate = null;
         private static Action<AdjustSessionFailure> sessionFailureDelegate = null;
         private static Action<AdjustAttribution> attributionChangedDelegate = null;
-        private static Action<int> conversionValueUpdatedDelegate = null;
 #endif
 
         void Awake()
         {
             appToken = TinySauce.getToken();
+            
 
-            if (appToken == "")
+            if(appToken == "")
             {
                 throw new MissingFieldException("Go here", new Exception("No Adjust token found please add it to your tinysauce settings"));
                 Debug.Break();
                 return;
             }
-
             if (IsEditor()) 
             {
                 return;
@@ -58,14 +57,6 @@ namespace com.adjust.sdk
 
             DontDestroyOnLoad(transform.gameObject);
 
-            #if UNITY_ANDROID
-                SetupAdjustAfterAtt();
-            #endif
-            
-        }
-        
-        public void SetupAdjustAfterAtt()
-        {
             if (!this.startManually)
             {
                 AdjustConfig adjustConfig = new AdjustConfig(this.appToken, this.environment, (this.logLevel == AdjustLogLevel.Suppress));
@@ -76,7 +67,6 @@ namespace com.adjust.sdk
                 Adjust.start(adjustConfig);
             }
         }
-
 
         void OnApplicationPause(bool pauseStatus)
         {
@@ -130,7 +120,6 @@ namespace com.adjust.sdk
                 Adjust.sessionFailureDelegate = adjustConfig.getSessionFailureDelegate();
                 Adjust.deferredDeeplinkDelegate = adjustConfig.getDeferredDeeplinkDelegate();
                 Adjust.attributionChangedDelegate = adjustConfig.getAttributionChangedDelegate();
-                Adjust.conversionValueUpdatedDelegate = adjustConfig.getConversionValueUpdatedDelegate();
                 AdjustiOS.Start(adjustConfig);
 #elif UNITY_ANDROID
                 AdjustAndroid.Start(adjustConfig);
@@ -428,24 +417,6 @@ namespace com.adjust.sdk
             AdjustiOS.TrackAdRevenue(source, payload);
 #elif UNITY_ANDROID
             AdjustAndroid.TrackAdRevenue(source, payload);
-#elif (UNITY_WSA || UNITY_WP8)
-            Debug.Log("[Adjust]: Ad revenue tracking is only supported for Android and iOS platforms.");
-#else
-            Debug.Log(errorMsgPlatform);
-#endif
-        }
-
-        public static void trackAdRevenue(AdjustAdRevenue adRevenue)
-        {
-            if (IsEditor()) 
-            {
-                return;
-            }
-
-#if UNITY_IOS
-            AdjustiOS.TrackAdRevenue(adRevenue);
-#elif UNITY_ANDROID
-            AdjustAndroid.TrackAdRevenue(adRevenue);
 #elif (UNITY_WSA || UNITY_WP8)
             Debug.Log("[Adjust]: Ad revenue tracking is only supported for Android and iOS platforms.");
 #else
@@ -846,29 +817,6 @@ namespace com.adjust.sdk
             }
 
             Adjust.deferredDeeplinkDelegate(deeplinkURL);
-        }
-
-        public void GetNativeConversionValueUpdated(string conversionValue)
-        {
-            if (IsEditor()) 
-            {
-                return;
-            }
-
-            if (Adjust.conversionValueUpdatedDelegate == null)
-            {
-                Debug.Log("[Adjust]: Conversion value updated delegate was not set.");
-                return;
-            }
-
-            int cv = -1;
-            if (Int32.TryParse(conversionValue, out cv))
-            {
-                if (cv != -1)
-                {
-                    Adjust.conversionValueUpdatedDelegate(cv);
-                }
-            }
         }
 
         public void GetAuthorizationStatus(string authorizationStatus)

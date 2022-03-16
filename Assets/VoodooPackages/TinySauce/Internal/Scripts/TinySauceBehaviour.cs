@@ -1,8 +1,8 @@
 ﻿using System;
-using com.adjust.sdk;
 using UnityEngine;
 using Voodoo.Sauce.Internal.Analytics;
 using Voodoo.Sauce.Internal.IdfaAuthorization;
+using Facebook.Unity;
 
 namespace Voodoo.Sauce.Internal
 {
@@ -11,7 +11,6 @@ namespace Voodoo.Sauce.Internal
         private const string TAG = "TinySauce";
         private static TinySauceBehaviour _instance;
         private TinySauceSettings _sauceSettings;
-        private bool _advertiserTracking;
 
 
         private void Awake()
@@ -21,12 +20,12 @@ namespace Voodoo.Sauce.Internal
 
                 NativeWrapper.RequestAuthorization((status) =>
                 {
-                    _advertiserTracking = status == IdfaAuthorizationStatus.Authorized;
-                    GetComponent<Adjust>().SetupAdjustAfterAtt();
+                    InitFacebook();
                 });
 
             #elif UNITY_ANDROID
 
+                InitFacebook();
 
             #endif
             
@@ -51,6 +50,21 @@ namespace Voodoo.Sauce.Internal
         }
         
 
+        private void InitCallback()
+        {
+            if (FB.IsInitialized)
+            {
+                // Signal an app activation App Event
+                FB.ActivateApp();
+                // Continue with Facebook SDK
+                // ...
+            }
+            else
+            {
+                Debug.Log("Failed to Initialize the Facebook SDK");
+            }
+        }
+
         private void OnHideUnity(bool isGameShown)
         {
             if (!isGameShown)
@@ -72,7 +86,13 @@ namespace Voodoo.Sauce.Internal
             AnalyticsManager.Initialize(_sauceSettings, true);
             
         }
-        
+        private void InitFacebook()
+        {
+            if (!FB.IsInitialized) FB.Init(InitCallback, OnHideUnity);
+            
+            else FB.ActivateApp();           
+        }
+
         private void OnApplicationPause(bool pauseStatus)
         {
             // Brought forward after soft closing 
