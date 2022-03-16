@@ -147,6 +147,7 @@ public class BoxControll : MonoBehaviour
             {
                 GameObject sand = PoolControll.Instance.Spawn("Sand");
                 sand.GetComponent<Box>().buildSand = true;
+                sand.GetComponent<Box>().SetState("sand", false);
                 sand.transform.position = startBox.transform.parent.position;              
                 StartCoroutine(sand.GetComponent<Box>().DoMove(0.3f, _build.NextBlock()));
                 sandCount--;

@@ -20,6 +20,7 @@ public class Box : MonoBehaviour
     private void OnEnable()
     {      
         move = false;
+        
     }
     void Start()
     {
@@ -29,13 +30,12 @@ public class Box : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            if(transform.GetChild(i).gameObject.name == name)
+            transform.GetChild(i).gameObject.SetActive(false);
+            if (transform.GetChild(i).gameObject.name == name)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
                 transform.GetChild(i).gameObject.GetComponent<Outline>().enabled = outline;
-            }   
-            else
-                transform.GetChild(i).gameObject.SetActive(false);
+            }  
         }
     }
     private void Update()
