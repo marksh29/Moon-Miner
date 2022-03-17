@@ -5,7 +5,8 @@ using UnityEngine;
 public class BarrelScale : MonoBehaviour
 {
     [SerializeField] GameObject barrel;
-    [SerializeField] float minScale, maxScale, addScale, curScale;
+    [SerializeField] float minScale, maxScale, addScale, curScale, scaleSpeed;
+        
 
     void Start()
     {
@@ -16,13 +17,13 @@ public class BarrelScale : MonoBehaviour
     {
         if (barrel.transform.localScale.x < curScale)
         {
-            barrel.transform.localScale += new Vector3(addScale, addScale, addScale) * Time.deltaTime;
+            barrel.transform.localScale += new Vector3(scaleSpeed, scaleSpeed, scaleSpeed) * Time.deltaTime;
             if (barrel.transform.localScale.x > maxScale)
                 barrel.transform.localScale = new Vector3(maxScale, maxScale, maxScale);
         }
         if (barrel.transform.localScale.x > curScale)
         {
-            barrel.transform.localScale -= new Vector3(addScale, addScale, addScale) * Time.deltaTime;
+            barrel.transform.localScale -= new Vector3(scaleSpeed, scaleSpeed, scaleSpeed) * Time.deltaTime;
             if (barrel.transform.localScale.x < minScale)
                 barrel.transform.localScale = new Vector3(minScale, minScale, minScale);
         }

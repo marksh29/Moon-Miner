@@ -16,15 +16,15 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 0
+  - 364488792202972
   appLabels:
-  - Your App Name
+  - boat miner
   cookie: 1
   logging: 1
   status: 1
   xfbml: 0
   frictionlessRequests: 1
-  androidKeystorePath: 
+  androidKeystorePath: "C:\\Users\\\u0410\u0434\u043C\u0438\u043D\u0438\u0441\u0442\u0440\u0430\u0442\u043E\u0440\\Downloads\\Unity_key\\BoatMiner\\boat.keystore"
   iosURLSuffix: 
   appLinkSchemes:
   - list: []

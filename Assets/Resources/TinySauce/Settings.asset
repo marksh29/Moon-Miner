@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameAnalyticsIosGameKey: 
   gameAnalyticsIosSecretKey: 
-  gameAnalyticsAndroidGameKey: 
-  gameAnalyticsAndroidSecretKey: 
+  gameAnalyticsAndroidGameKey: f07e57dd5146395167633c171bd13a2c
+  gameAnalyticsAndroidSecretKey: 9a8c340b753ff20b1b65d77150ae2945daa227ef
+  facebookAppId: 364488792202972
   adjustIOSToken: 
-  adjustAndroidToken: 
+  adjustAndroidToken: csrrun7v6ozk
   EditorIdfa: 2ec3f847-de96-40cd-97a5-9db635afedec
   UseRemoteConfig: 0
   UseVoodooAnalytics: 1
