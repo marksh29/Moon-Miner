@@ -52,27 +52,14 @@ public class Controll : MonoBehaviour
             StartCoroutine(Win());
     }
 
-
     public void StartLevel()
     {
         Set_state("Game");
     }
     public void Next_level()
     {
-        if(Application.loadedLevel == SceneManager.sceneCount - 1)
-        {
-            SceneManager.LoadScene(0);
-        }
-        else
-        {
-            SceneManager.LoadScene(Application.loadedLevel + 1);
-        }
+        SceneManager.LoadScene(Application.loadedLevel == Application.levelCount -1 ? 0 : (Application.loadedLevel + 1));
     }
-    public void Restart()
-    {
-        SceneManager.LoadScene(Application.loadedLevel);
-    }
-
     
     public IEnumerator Win()
     {

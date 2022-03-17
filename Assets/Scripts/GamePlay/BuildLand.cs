@@ -33,9 +33,7 @@ public class BuildLand : MonoBehaviour
     }
     public void BuildCount()
     {
-        buildCount--;
-
-     
+        buildCount--;     
     }
     public Transform NextBlock()
     {
@@ -56,12 +54,13 @@ public class BuildLand : MonoBehaviour
     void FinalBuild()
     {
         Controll.Instance.AddWin();
-        GetComponent<BoxCollider>().enabled = false;
+        //GetComponent<BoxCollider>().enabled = false;       
         buildOn = true;
         workBuild.SetActive(false);
         levels.SetActive(false);
         readyBuild.SetActive(true);
-        txt.transform.parent.gameObject.SetActive(false);
+        txt?.transform.parent.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
     private void OnTriggerStay(Collider other)
     {
