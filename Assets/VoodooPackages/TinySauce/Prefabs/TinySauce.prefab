@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 114344982431172690}
   - component: {fileID: 1874120793}
   - component: {fileID: 5420363023482674175}
+  - component: {fileID: 1396480770701870059}
   m_Layer: 0
   m_Name: TinySauce
   m_TagString: Untagged
@@ -76,5 +77,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40dd6e098def94adfa29ff3e9c0b30ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tsDebugUIPrefab: {fileID: 5549150780640145141, guid: ef7fb689f1ca94381904713abd1ee14a,
-    type: 3}
+  tsDebugUIPrefab: {fileID: 5549150780640145141, guid: ef7fb689f1ca94381904713abd1ee14a, type: 3}
+--- !u!114 &1396480770701870059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384633641988006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f473b95b1e5194eac7aee797ec83dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

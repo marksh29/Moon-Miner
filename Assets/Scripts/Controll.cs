@@ -20,7 +20,6 @@ public class Controll : MonoBehaviour
     }
     void Start()
     {
-        GameAnalityc.Instance.Start_level((Application.loadedLevel + 1));
         Set_state("Menu");
         List<GameObject> list_1 = new List<GameObject>(GameObject.FindGameObjectsWithTag("DropSand"));
         List<GameObject> list_2 = new List<GameObject>(GameObject.FindGameObjectsWithTag("DropFish"));
@@ -38,7 +37,6 @@ public class Controll : MonoBehaviour
         switch(_state)
         {          
             case ("Win"):
-                GameAnalityc.Instance.Win_level((Application.loadedLevel + 1), 0);
                 break;
             case ("Lose"):
 

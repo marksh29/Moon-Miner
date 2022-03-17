@@ -23,39 +23,18 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject waterPrticle;
     [SerializeField] private float _moveSpeed, _wallSpeed;
     [SerializeField] Transform body, wall;   
-    //[SerializeField] Transform cylindr;
-    //[SerializeField] Transform[] well;
+
     [Header("---------------Attack---------------")]
     [SerializeField] float damage;
     [SerializeField] bool attack;
-    //public bool move, drop;
-
-    //[Header("Track")]    
-    //[SerializeField] int _lineWidth;
-    //[SerializeField] List<GameObject> _trackList;
-    //[SerializeField] Transform[] _trackPos;
-    //Vector3 oldPositions;
-
-    //[Header("Scale")]
-    //[SerializeField] Transform[] startPos;
-    //[SerializeField] float addScale, maxScale;
-    //public static event Action _upgrade;
-
-    //[Header("-------Camera-------")]
-    //[SerializeField] CinemachineVirtualCamera cam;
-    //[SerializeField] float camScaleAdd, camScale, maxCamScale;
-
-    private void Awake()
-    {       
+      
+    private void Start()
+    {
         if (Instance == null) Instance = this;
         if (_joystick == joystickType.Static)
             _joystickS.gameObject.SetActive(true);
         else
-            _joystickD.gameObject.SetActive(true);       
-    }
-    private void Start()
-    {
-        
+            _joystickD.gameObject.SetActive(true);
     }
     private void Update()
     {
@@ -65,7 +44,6 @@ public class Player : MonoBehaviour
         if (Controll.Instance._state == "Game")
         {        
             _rigidbody.velocity = new Vector3(Joyctick("X") * _moveSpeed, 0, Joyctick("Y") * _moveSpeed);
-
             if (Joyctick("X") >= 0.1f || Joyctick("Y") >= 0.1f || Joyctick("X") <= -0.1f || Joyctick("Y") <= -0.1f)
             {
                 transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
