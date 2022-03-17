@@ -181,7 +181,7 @@ MonoBehaviour:
   scrapLand: 0
   target: {fileID: 0}
   count: 0
-  force: 1
+  force: 2
   spawnTime: 0.1
   jumpTime: 0.01
   jumpForce: 5
