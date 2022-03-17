@@ -17,21 +17,21 @@ public class BarrelScale : MonoBehaviour
         if (barrel.transform.localScale.x < curScale)
         {
             barrel.transform.localScale += new Vector3(addScale, addScale, addScale) * Time.deltaTime;
-            if (barrel.transform.localScale.x > curScale)
-                barrel.transform.localScale = new Vector3(curScale, curScale, curScale);
+            if (barrel.transform.localScale.x > maxScale)
+                barrel.transform.localScale = new Vector3(maxScale, maxScale, maxScale);
         }
         if (barrel.transform.localScale.x > curScale)
         {
             barrel.transform.localScale -= new Vector3(addScale, addScale, addScale) * Time.deltaTime;
-            if (barrel.transform.localScale.x < curScale)
-                barrel.transform.localScale = new Vector3(curScale, curScale, curScale);
+            if (barrel.transform.localScale.x < minScale)
+                barrel.transform.localScale = new Vector3(minScale, minScale, minScale);
         }
     }
     public void SetScale(int count)
     {
         curScale = minScale + addScale * count;
-        if (curScale > maxScale)
-            curScale = maxScale;
+        //if (curScale > maxScale)
+        //    curScale = maxScale;
         barrel.SetActive(curScale == minScale ? false : true);
     }
 }
