@@ -135,7 +135,8 @@ public class BoxControll : MonoBehaviour
                 barCtrl.SetScale(scrapCount);
             }
             else
-                StopCoroutine(lastRoutine);         
+                if(lastRoutine !=  null)
+                    StopCoroutine(lastRoutine);         
             yield return new WaitForSeconds(dropSpeed);
         }
     }
@@ -156,7 +157,8 @@ public class BoxControll : MonoBehaviour
                 yield return new WaitForSeconds(dropSpeed);
             }
             else
-                StopCoroutine(sandCouroutine);
+                 if (sandCouroutine != null)
+                    StopCoroutine(sandCouroutine);
         }       
     }
     IEnumerator DropFish(BuildFish _target)
@@ -177,7 +179,8 @@ public class BoxControll : MonoBehaviour
                 yield return new WaitForSeconds(dropSpeed);
             }
             else
-                StopCoroutine(fishCouroutine);
+                if (fishCouroutine != null)
+                    StopCoroutine(fishCouroutine);
         }
     }
 
